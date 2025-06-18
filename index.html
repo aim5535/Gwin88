@@ -11,7 +11,6 @@
       background: #000;
       color: #fff;
     }
-
     header {
       background: #e50914;
       display: flex;
@@ -19,11 +18,9 @@
       align-items: center;
       padding: 10px 20px;
     }
-
     .logo img {
       height: 40px;
     }
-
     .signup-link a {
       background-color: #ffcc00;
       color: #111;
@@ -33,55 +30,41 @@
       font-weight: bold;
     }
 
-    /* 跑马灯 */
     .marquee {
       background: #111;
       color: #0f0;
       overflow: hidden;
       white-space: nowrap;
     }
-
     .marquee span {
       display: inline-block;
       padding-left: 100%;
       animation: scroll 80s linear infinite;
     }
-
     @keyframes scroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-100%); }
     }
 
-    /* 中间轮播容器包裹器 */
-    .slider-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 60vh;
-    }
-
-    /* 轮播图 */
     .slider {
       position: relative;
       width: 90vw;
       max-width: 1000px;
       height: 50vh;
+      margin: 20px auto; /* 中间显示 */
       overflow: hidden;
     }
-
     .slides {
       display: flex;
-      width: 100%;
+      width: 300%;
       height: 100%;
       transition: transform 0.5s ease-in-out;
     }
-
     .slides img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-
     .nav-btn {
       position: absolute;
       top: 50%;
@@ -93,7 +76,6 @@
       cursor: pointer;
       z-index: 2;
     }
-
     .prev { left: 10px; }
     .next { right: 10px; }
 
@@ -103,7 +85,6 @@
       width: 100%;
       text-align: center;
     }
-
     .dot {
       display: inline-block;
       height: 10px;
@@ -113,19 +94,16 @@
       border-radius: 50%;
       cursor: pointer;
     }
-
     .active {
       background-color: #fff;
     }
 
-    /* 浮动按钮 */
     .chat-button {
       position: fixed;
       bottom: 80px;
       right: 20px;
       z-index: 9999;
     }
-
     .chat-toggle {
       width: 60px;
       height: 60px;
@@ -137,7 +115,6 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.4);
       cursor: pointer;
     }
-
     .chat-box {
       display: none;
       position: absolute;
@@ -149,11 +126,9 @@
       padding: 10px 15px;
       width: 250px;
     }
-
     .chat-box p {
       margin: 5px 0;
     }
-
     .chat-box .btn {
       display: block;
       margin: 5px 0;
@@ -164,7 +139,6 @@
       color: white;
       font-weight: bold;
     }
-
     .btn-wa { background: #25D366; }
     .btn-tg { background: #0088cc; }
     .btn-live { background: #00cfc5; }
@@ -193,21 +167,19 @@
     <span id="marqueeText"></span>
   </div>
 
-  <!-- 居中海报轮播 -->
-  <div class="slider-wrapper">
-    <div class="slider">
-      <div class="slides" id="slides">
-        <img src="https://i.imgur.com/qHVecWQ.gif" alt="Banner 1">
-        <img src="https://i.imgur.com/Juv3NUQ.gif" alt="Banner 2">
-        <img src="https://i.imgur.com/QbBLG0O.png" alt="Banner 3">
-      </div>
-      <div class="nav-btn prev" onclick="moveSlide(-1)">❮</div>
-      <div class="nav-btn next" onclick="moveSlide(1)">❯</div>
-      <div class="dots">
-        <span class="dot active" onclick="currentSlide(0)"></span>
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-      </div>
+  <!-- 海报轮播 -->
+  <div class="slider">
+    <div class="slides" id="slides">
+      <img src="https://imgur.com/LPgEU3I.png" alt="Banner 1">
+      <img src="https://imgur.com/5MKzeVa.png" alt="Banner 2">
+      <img src="https://imgur.com/MhFbzkz.png" alt="Banner 3">
+    </div>
+    <div class="nav-btn prev" onclick="moveSlide(-1)">❮</div>
+    <div class="nav-btn next" onclick="moveSlide(1)">❯</div>
+    <div class="dots">
+      <span class="dot active" onclick="currentSlide(0)"></span>
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
     </div>
   </div>
 
@@ -245,8 +217,6 @@
     function toggleChat() {
       const box = document.getElementById('chatBox');
       box.style.display = box.style.display === 'block' ? 'none' : 'block';
-
-      // 随机 WhatsApp 链接
       const numbers = ['60142820944', '60142820304', '60178986642'];
       const chosen = numbers[Math.floor(Math.random() * numbers.length)];
       document.getElementById('waBtn').href = `https://wa.me/${chosen}`;
@@ -278,5 +248,6 @@
       moveSlide(1);
     }, 6000);
   </script>
+
 </body>
 </html>

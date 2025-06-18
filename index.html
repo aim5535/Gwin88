@@ -95,17 +95,15 @@
   </section>
 
   <script>
-    const marquee = document.querySelector('.marquee span');
-    let messages = [];
-    for (let i = 0; i < 50; i++) {
-      let number = '🎉+601';
-      let front = '🎉+601';
-      let back = Math.floor(Math.random() * 9000 + 1000).toString();
-      let hidden = front + '****' + back;
-      let amount = 'RM' + Math.floor(Math.random() * 900 + 100);
-      messages.push(`🎉+${hidden} Won ${amount} | `);
-    }
-    marquee.textContent = messages.join('');
-  </script>
-</body>
-</html>
+  const marquee = document.querySelector('.marquee span');
+  let messages = [];
+  for (let i = 0; i < 50; i++) {
+    let front = Math.floor(Math.random() * 900 + 100).toString();
+    let back = Math.floor(Math.random() * 9000 + 1000).toString();
+    let phone = `+601${front}****${back}`;
+    let amount = 'RM' + Math.floor(Math.random() * 900 + 100);
+    messages.push(`🎉${phone} Won ${amount} | `);
+  }
+  marquee.textContent = messages.join('');
+</script>
+

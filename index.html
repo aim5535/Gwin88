@@ -185,9 +185,23 @@
     }
 
     function goToRandomWhatsApp() {
-      const numbers = ['0142820304', '0123456789', '0111122233'];
-      const chosen = numbers[Math.floor(Math.random() * numbers.length)];
-      window.open(`https://wa.me/${chosen}`, '_blank');
+  let count = localStorage.getItem('wa_clicks') || 0;
+  localStorage.setItem('wa_clicks', ++count);
+
+  const numbers = ['60142820944', '60142820304', '60178986642'];
+  const chosen = numbers[Math.floor(Math.random() * numbers.length)];
+  console.log(`WhatsApp clicked ${count} times`);
+  window.open(`https://wa.me/${chosen}`, '_blank');
+} else if (hour >= 14 && hour < 22) {
+    numbers = ['60142820304']; // 下午
+  } else {
+    numbers = ['60178986642']; // 晚上
+  }
+
+  const chosen = numbers[Math.floor(Math.random() * numbers.length)];
+  console.log(`WhatsApp clicked ${count} times today`);
+  window.open(`https://wa.me/${chosen}`, '_blank');
+}`, '_blank');
     }
   </script>
 </body>

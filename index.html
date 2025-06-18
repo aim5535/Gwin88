@@ -53,12 +53,10 @@
       0% { transform: translateX(0); }
       100% { transform: translateX(-100%); }
     }
-      100% { transform: translateX(-100%); }
-    }
-    .features, .contact {
+    .features {
       padding: 2rem 1rem;
     }
-    .features h2, .contact h2 {
+    .features h2 {
       color: #ffcc00;
       margin-bottom: 1rem;
     }
@@ -84,7 +82,6 @@
     .buttons a:hover {
       background: #b00610;
     }
-    /* 浮动按钮样式 */
     .floating-button {
       position: fixed;
       bottom: 20px;
@@ -150,8 +147,6 @@
     </ul>
   </section>
 
-  
-
   <!-- 浮动客服按钮区域 -->
   <div class="floating-button">
     <div class="option-btns" id="contactOptions">
@@ -163,6 +158,7 @@
   </div>
 
   <script>
+    // 跑马灯文字生成
     const marquee = document.querySelector('.marquee span');
     let messages = [];
     for (let i = 0; i < 50; i++) {
@@ -172,29 +168,21 @@
     }
     marquee.textContent = messages.join('');
 
+    // 切换浮动客服按钮
     function toggleContact() {
       const options = document.getElementById('contactOptions');
       options.style.display = options.style.display === 'flex' ? 'none' : 'flex';
     }
 
+    // 随机跳转 WhatsApp
     function goToRandomWhatsApp() {
-  let count = localStorage.getItem('wa_clicks') || 0;
-  localStorage.setItem('wa_clicks', ++count);
+      let count = localStorage.getItem('wa_clicks') || 0;
+      localStorage.setItem('wa_clicks', ++count);
 
-  const numbers = ['60142820944', '60142820304', '60178986642'];
-  const chosen = numbers[Math.floor(Math.random() * numbers.length)];
-  console.log(`WhatsApp clicked ${count} times`);
-  window.open(`https://wa.me/${chosen}`, '_blank');
-} else if (hour >= 14 && hour < 22) {
-    numbers = ['60142820304']; // 下午
-  } else {
-    numbers = ['60178986642']; // 晚上
-  }
-
-  const chosen = numbers[Math.floor(Math.random() * numbers.length)];
-  console.log(`WhatsApp clicked ${count} times today`);
-  window.open(`https://wa.me/${chosen}`, '_blank');
-}`, '_blank');
+      const numbers = ['60142820944', '60142820304', '60178986642'];
+      const chosen = numbers[Math.floor(Math.random() * numbers.length)];
+      console.log(`WhatsApp clicked ${count} times`);
+      window.open(`https://wa.me/${chosen}`, '_blank');
     }
   </script>
 </body>

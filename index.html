@@ -33,7 +33,7 @@
       100% { transform: translateX(-100%); }
     }
 
-    /* 轮播图 */
+    /* 海报轮播 */
     .banner-carousel {
       max-width: 100%;
       height: 50vh;
@@ -56,87 +56,109 @@
       display: block;
     }
 
-    /* 客服按钮 */
-    .support-widget {
+    /* 客服按钮样式 */
+    .floating-support {
       position: fixed;
-      bottom: 100px;
+      bottom: 120px;
       right: 20px;
-      width: 250px;
-      background-color: #1c1c1c;
-      border-radius: 10px;
-      padding: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
       z-index: 9999;
-      text-align: left;
-      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
     }
 
-    .support-widget img.avatar {
+    .floating-support .avatar {
       width: 50px;
       height: 50px;
       border-radius: 50%;
-      display: block;
-      margin: 0 auto 10px auto;
+      border: 2px solid #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
     }
 
-    .support-widget .greet {
-      font-weight: bold;
-      font-size: 1rem;
-      margin-bottom: 8px;
-    }
-
-    .support-widget .desc {
-      font-size: 0.9rem;
-      margin-bottom: 12px;
-    }
-
-    .support-widget a.contact-btn {
-      display: block;
-      margin: 6px 0;
-      padding: 10px;
-      border-radius: 6px;
-      text-decoration: none;
+    .support-box {
+      display: none;
+      margin-top: 10px;
+      background-color: #1c1c1c;
+      border-radius: 10px;
+      padding: 15px;
+      width: 220px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
       color: white;
-      font-weight: bold;
-      text-align: center;
       font-size: 14px;
     }
 
-    .support-widget a.whatsapp { background-color: #25D366; }
-    .support-widget a.telegram { background-color: #0088cc; }
-    .support-widget a.livechat { background-color: #00c0c0; }
+    .support-box .greet {
+      font-weight: bold;
+      margin-bottom: 5px;
+      font-size: 15px;
+    }
 
-    .support-widget a:hover {
+    .support-box .desc {
+      margin-bottom: 12px;
+      font-size: 13px;
+    }
+
+    .support-box .btn {
+      display: block;
+      padding: 8px;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .support-box .btn.whatsapp { background: #25D366; }
+    .support-box .btn.telegram { background: #0088cc; }
+    .support-box .btn.livechat { background: #ffaa00; }
+
+    .support-box .btn:hover {
       opacity: 0.9;
+    }
+
+    /* 响应式 */
+    @media (max-width: 768px) {
+      .banner-carousel {
+        height: 30vh;
+      }
+
+      .support-box {
+        width: 200px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- 跑马灯 -->
+  <!-- ✅ 跑马灯 -->
   <div class="marquee">
     <span id="marqueeText"></span>
   </div>
 
-  <!-- 海报轮播 -->
+  <!-- ✅ 中间轮播海报 -->
   <div class="banner-carousel">
     <img src="https://i.imgur.com/qHVecWQ.gif" class="active" />
     <img src="https://i.imgur.com/Juv3NUQ.gif" />
     <img src="https://i.imgur.com/QbBLG0O.png" />
   </div>
 
-  <!-- 浮动客服按钮 -->
-  <div class="support-widget">
-    <img class="avatar" src="https://i.imgur.com/boCqKhp.jpeg" alt="Avatar" />
-    <div class="greet">Hi: 想了解今日优惠吗?</div>
-    <div class="desc">点击以下方式与我们联系：</div>
-    <a class="contact-btn whatsapp" href="#" onclick="goToRandomWhatsApp()">📞 WhatsApp</a>
-    <a class="contact-btn telegram" href="https://t.me/Cs02easykaya" target="_blank">✈️ Telegram</a>
-    <a class="contact-btn livechat" href="#" onclick="alert('Live Chat 模拟中...')">💬 Live Chat</a>
+  <!-- ✅ 浮动客服按钮 -->
+  <div class="floating-support" onclick="toggleSupport()">
+    <img src="https://i.imgur.com/boCqKhp.jpeg" class="avatar" />
+    <div class="support-box" id="supportBox">
+      <div class="greet">Hi: 想了解今日优惠吗?</div>
+      <div class="desc">点击以下方式与我们联系：</div>
+      <a class="btn whatsapp" href="https://wa.me/60142820944" target="_blank">📞 WhatsApp</a>
+      <a class="btn telegram" href="https://t.me/Cs02easykaya" target="_blank">✈️ Telegram</a>
+      <a class="btn livechat" href="#" onclick="alert('Live Chat 模拟中...')">💬 Live Chat</a>
+    </div>
   </div>
 
+  <!-- ✅ JS 逻辑 -->
   <script>
-    // ✅ 跑马灯内容
+    // 跑马灯生成文字
     const marquee = document.getElementById('marqueeText');
     let messages = [];
     for (let i = 0; i < 50; i++) {
@@ -146,7 +168,7 @@
     }
     marquee.textContent = messages.join('');
 
-    // ✅ 轮播逻辑
+    // 轮播图切换
     const banners = document.querySelectorAll('.banner-carousel img');
     let current = 0;
     setInterval(() => {
@@ -155,11 +177,10 @@
       banners[current].classList.add('active');
     }, 3000);
 
-    // ✅ WhatsApp 随机跳转
-    function goToRandomWhatsApp() {
-      const numbers = ['60142820944', '60142820304', '60178986642'];
-      const chosen = numbers[Math.floor(Math.random() * numbers.length)];
-      window.open(`https://wa.me/${chosen}`, '_blank');
+    // 展开客服按钮
+    function toggleSupport() {
+      const box = document.getElementById('supportBox');
+      box.style.display = box.style.display === 'block' ? 'none' : 'block';
     }
   </script>
 

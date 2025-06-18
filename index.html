@@ -1,237 +1,135 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GWIN88 | 娱乐平台</title>
-  <style>
-   body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #ffcc00, #b8860b);
-  color: #fff;
-  text-align: center;
-}
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: #fff;
+    text-align: center;
+  }
 
-    /* 老虎机背景动画 */
-    .slot-background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      overflow: hidden;
-      background: transparent;
-      opacity: 0.2;
-    }
+  header {
+    background: #e50914;
+    padding: 0.8rem 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-    .slot-strip {
-      font-size: 60px;
-      white-space: nowrap;
-      animation: slot-roll 20s linear infinite;
-      color: white;
-      opacity: 0.3;
-      padding-top: 20%;
-      text-shadow: 0 0 8px #ff0;
-    }
+  .logo {
+    display: flex;
+    align-items: center;
+  }
 
-    @keyframes slot-roll {
-      from { transform: translateX(100%); }
-      to { transform: translateX(-100%); }
-    }
+  .logo img {
+    height: 40px;
+  }
 
-    header {
-      background: #e50914;
-      padding: 0.8rem 1rem;
-      font-size: 1.2rem;
-      font-weight: bold;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  .signup-link a {
+    background-color: #ffcc00;
+    color: #111;
+    padding: 8px 14px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
 
-    .logo {
-      display: flex;
-      align-items: center;
-    }
+  .marquee {
+    background: #222;
+    color: #0f0;
+    padding: 0.5rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 
-    .logo img {
-      height: 40px;
-    }
+  .marquee span {
+    display: inline-block;
+    padding-left: 100%;
+    animation: scroll 80s linear infinite;
+  }
 
-    .signup-link a {
-      background-color: #ffcc00;
-      color: #111;
-      padding: 8px 14px;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.9rem;
-    }
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
 
-    .marquee {
-      background: #222;
-      color: #0f0;
-      padding: 0.5rem 0;
-      overflow: hidden;
-      white-space: nowrap;
-    }
+  .features, .contact {
+    padding: 2rem 1rem;
+  }
 
-    .marquee span {
-      display: inline-block;
-      padding-left: 100%;
-      animation: scroll 80s linear infinite;
-    }
+  .features h2, .contact h2 {
+    color: #ffcc00;
+    margin-bottom: 1rem;
+  }
 
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
+  .features ul {
+    list-style: none;
+    padding: 0;
+    font-size: 1.1rem;
+  }
 
-    .features, .contact {
-      padding: 2rem 1rem;
-    }
+  .features ul li {
+    margin: 0.6rem 0;
+  }
 
-    .features h2, .contact h2 {
-      color: #ffcc00;
-      margin-bottom: 1rem;
-    }
+  .buttons a {
+    display: inline-block;
+    margin: 1rem;
+    padding: 1rem 2rem;
+    background: #e50914;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
 
-    .features ul {
-      list-style: none;
-      padding: 0;
-      font-size: 1.1rem;
-    }
+  .buttons a:hover {
+    background: #b00610;
+  }
 
-    .features ul li {
-      margin: 0.6rem 0;
-    }
+  .floating-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
 
-    .buttons a {
-      display: inline-block;
-      margin: 1rem;
-      padding: 1rem 2rem;
-      background: #e50914;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
+  .floating-button .main-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #e50914;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    line-height: 60px;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  }
 
-    .buttons a:hover {
-      background: #b00610;
-    }
+  .floating-button .option-btns {
+    display: none;
+    flex-direction: column;
+    margin-bottom: 10px;
+    align-items: flex-end;
+  }
 
-    .floating-button {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 9999;
-    }
+  .floating-button .option-btns a {
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    padding: 8px 14px;
+    margin: 4px 0;
+    border-radius: 5px;
+    white-space: nowrap;
+    transition: all 0.2s;
+    font-size: 14px;
+  }
 
-    .floating-button .main-btn {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background-color: #e50914;
-      color: white;
-      font-size: 30px;
-      text-align: center;
-      line-height: 60px;
-      cursor: pointer;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    }
-
-    .floating-button .option-btns {
-      display: none;
-      flex-direction: column;
-      margin-bottom: 10px;
-      align-items: flex-end;
-    }
-
-    .floating-button .option-btns a {
-      background-color: #333;
-      color: white;
-      text-decoration: none;
-      padding: 8px 14px;
-      margin: 4px 0;
-      border-radius: 5px;
-      white-space: nowrap;
-      transition: all 0.2s;
-      font-size: 14px;
-    }
-
-    .floating-button .option-btns a:hover {
-      background-color: #555;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- 老虎机背景动画层 -->
-  <div class="slot-background">
-    <div class="slot-strip">🎰🎲🍒💰🧧⭐🎰🎲🍒💰🧧⭐🎰🎲🍒💰🧧⭐</div>
-  </div>
-
-  <header>
-    <div class="logo">
-      <img src="logo.png" alt="Logo">
-    </div>
-    <div class="signup-link">
-      <a href="#" onclick="goToRandomWhatsApp()">SIGN UP</a>
-    </div>
-  </header>
-
-  <div class="marquee">
-    <span></span>
-  </div>
-
-  <section class="features">
-    <h2>平台特色</h2>
-    <ul>
-      <li>🌐 多平台支持：手机 / 平板 / 电脑</li>
-      <li>💰 高返水 & 快速出款</li>
-      <li>🎲 真人 / 体育 / 老虎机</li>
-      <li>🛡️ 安全保障 & 隐私保护</li>
-      <li>🕹️ 24小时客服支持</li>
-    </ul>
-  </section>
-
-  <!-- 浮动客服按钮 -->
-  <div class="floating-button">
-    <div class="option-btns" id="contactOptions">
-      <a href="https://t.me/Cs02easykaya" target="_blank">📲 Telegram</a>
-      <a href="https://wa.me/0142820304" target="_blank">📞 WhatsApp</a>
-      <a href="#" onclick="alert('Live Chat 模拟中...')">💬 Live Chat</a>
-    </div>
-    <div class="main-btn" onclick="toggleContact()">🗨️</div>
-  </div>
-
-  <script>
-    // 跑马灯信息
-    const marquee = document.querySelector('.marquee span');
-    let messages = [];
-    for (let i = 0; i < 50; i++) {
-      let suffix = Math.floor(Math.random() * 9000 + 1000);
-      let amount = 'RM' + Math.floor(Math.random() * 900 + 100);
-      messages.push(`🎉+601******${suffix} Won ${amount} | `);
-    }
-    marquee.textContent = messages.join('');
-
-    // 随机 WhatsApp 按钮跳转
-    function goToRandomWhatsApp() {
-      const numbers = ['60142820944', '60142820304', '60178986642'];
-      const chosen = numbers[Math.floor(Math.random() * numbers.length)];
-      window.open(`https://wa.me/${chosen}`, '_blank');
-    }
-
-    // 浮动按钮控制
-    function toggleContact() {
-      const options = document.getElementById('contactOptions');
-      options.style.display = options.style.display === 'flex' ? 'none' : 'flex';
-    }
-  </script>
-</body>
-</html>
+  .floating-button .option-btns a:hover {
+    background-color: #555;
+  }
+</style>

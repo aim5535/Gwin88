@@ -99,7 +99,7 @@
     let messages = [];
     for (let i = 0; i < 50; i++) {
       let number = '+601';
-      number += Math.floor(Math.random() * 9000000 + 1000000).toString().replace(/(\d{3})(\d{4})/, '$1****$2');
+      number += Math.floor(Math.random() * 900000 + 100000).toString().replace(/(\d{3})(\d{4})/, '$1****$2');
       let amount = 'RM' + Math.floor(Math.random() * 900 + 100);
       messages.push(`${number} Won ${amount} | `);
     }

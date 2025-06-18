@@ -11,27 +11,21 @@
       background: #000;
       color: #fff;
     }
-
     header {
       background: #e50914;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 10px 20px;
       position: relative;
+      padding: 10px 20px;
     }
     .logo img {
-      height: 50px;
+      height: 40px;
     }
-     .signup-link {
-  position: absolute;
-  top: 20px;
-  /* 页面居中点 + 轮播图宽度一半 = 右对齐 */
-  left: calc(50% + 500px);
-  transform: translateX(-100%);
-}
-
-
+    .signup-link {
+      position: absolute;
+      right: calc(50% - 500px + 20px);
+    }
     .signup-link a {
       background-color: #ffcc00;
       color: #111;
@@ -57,19 +51,17 @@
       100% { transform: translateX(-100%); }
     }
 
-    .slider-container {
+    .slider-wrapper {
       display: flex;
       justify-content: center;
-      margin: 20px auto;
+      margin: 30px 0;
     }
-
     .slider {
       position: relative;
       width: 1000px;
       height: 500px;
       overflow: hidden;
     }
-
     .slides {
       display: flex;
       width: 300%;
@@ -81,7 +73,6 @@
       height: 500px;
       object-fit: cover;
     }
-
     .nav-btn {
       position: absolute;
       top: 50%;
@@ -95,7 +86,6 @@
     }
     .prev { left: 10px; }
     .next { right: 10px; }
-
     .dots {
       position: absolute;
       bottom: 10px;
@@ -159,44 +149,36 @@
     .btn-tg { background: #0088cc; }
     .btn-live { background: #00cfc5; }
 
-    /* 公司介绍 */
-    .about-section {
+    /* 公司介绍 & 四标题 */
+    .intro, .features {
       max-width: 1000px;
-      margin: 40px auto;
-      padding: 20px;
+      margin: 40px auto 20px;
+      padding: 0 15px;
       text-align: center;
-      color: white;
     }
-    .about-section h2 {
-      font-size: 2rem;
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    .features div {
+      flex: 1 1 220px;
+      background: #111;
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .features h3 {
       color: #ffcc00;
-    }
-    .about-section h3 {
-      color: #0f0;
-      margin-top: 30px;
-    }
-    .about-section ul {
-      list-style: none;
-      padding: 0;
-      line-height: 1.8;
-    }
-    .about-section a {
-      display: inline-block;
-      margin-top: 30px;
-      background: #ffcc00;
-      padding: 12px 24px;
-      border-radius: 6px;
-      font-weight: bold;
-      color: #000;
-      text-decoration: none;
     }
 
     @media (max-width: 768px) {
-      .slider {
-        width: 100%;
-        height: auto;
-      }
       .slides img {
+        width: 100vw;
+        height: auto;
+        object-fit: contain;
+      }
+      .slider {
         width: 100%;
         height: auto;
       }
@@ -205,13 +187,13 @@
 </head>
 <body>
 
-  <!-- 顶部导航 -->
+  <!-- 顶部栏 -->
   <header>
-    <div class="logo">
-      <img src="logo.png" alt="Logo">
-    </div>
     <div class="signup-link">
       <a href="#" onclick="goToRandomWhatsApp()">SIGN UP</a>
+    </div>
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
     </div>
   </header>
 
@@ -220,13 +202,13 @@
     <span id="marqueeText"></span>
   </div>
 
-  <!-- 轮播区域 -->
-  <div class="slider-container">
+  <!-- 轮播图 -->
+  <div class="slider-wrapper">
     <div class="slider">
       <div class="slides" id="slides">
-        <img src="https://imgur.com/LPgEU3I.jpg" alt="Banner 1">
-        <img src="https://imgur.com/5MKzeVa.jpg" alt="Banner 2">
-        <img src="https://imgur.com/MhFbzkz.jpg" alt="Banner 3">
+        <img src="https://i.imgur.com/LPgEU3I.jpg" alt="Banner 1">
+        <img src="https://i.imgur.com/5MKzeVa.jpg" alt="Banner 2">
+        <img src="https://i.imgur.com/MhFbzkz.jpg" alt="Banner 3">
       </div>
       <div class="nav-btn prev" onclick="moveSlide(-1)">❮</div>
       <div class="nav-btn next" onclick="moveSlide(1)">❯</div>
@@ -238,7 +220,33 @@
     </div>
   </div>
 
-  <!-- 客服按钮 -->
+  <!-- 公司介绍 -->
+  <section class="intro">
+    <h2>Welcome to GWIN88</h2>
+    <p>We are your ultimate online entertainment platform, offering a wide range of games, secure experience, exciting promotions, and 24/7 support. Join us today and experience the thrill!</p>
+  </section>
+
+  <!-- 四个标题介绍 -->
+  <section class="features">
+    <div>
+      <h3>Huge Selection of Games</h3>
+      <p>Explore slots, live casino, poker, and sports betting.</p>
+    </div>
+    <div>
+      <h3>Safe & Secure</h3>
+      <p>Advanced encryption to protect your data.</p>
+    </div>
+    <div>
+      <h3>Exciting Promotions</h3>
+      <p>Claim bonuses and special offers as you play.</p>
+    </div>
+    <div>
+      <h3>24/7 Support</h3>
+      <p>Our team is available around the clock to assist you.</p>
+    </div>
+  </section>
+
+  <!-- 浮动客服按钮 -->
   <div class="chat-button">
     <div class="chat-toggle" onclick="toggleChat()"></div>
     <div class="chat-box" id="chatBox">
@@ -250,28 +258,8 @@
     </div>
   </div>
 
-  <!-- 公司介绍 -->
-  <section class="about-section">
-    <h2>关于 GWIN88</h2>
-    <p style="font-size: 1.2rem; margin-top: 10px;">亚洲领先的线上娱乐平台</p>
-    <p style="margin-top: 20px; line-height: 1.6;">
-      GWIN88 是一个专业且值得信赖的线上娱乐平台，致力于为玩家提供最全面、最安全、最刺激的博彩体验。
-    </p>
-    <p style="margin-top: 20px; line-height: 1.6;">
-      平台拥有丰富多样的游戏选择，包括体育博彩、真人娱乐、电子老虎机、彩票和捕鱼等，满足不同玩家的娱乐需求。
-    </p>
-    <h3>为什么选择我们？</h3>
-    <ul>
-      <li>✅ 马来西亚玩家专属优惠与活动</li>
-      <li>✅ 极速存提款，支持多种付款方式</li>
-      <li>✅ 24小时在线客服支持</li>
-      <li>✅ 手机、平板、电脑全平台适配</li>
-    </ul>
-    <a href="#" onclick="goToRandomWhatsApp()">立即注册，领取专属奖励</a>
-  </section>
-
+  <!-- JS 脚本 -->
   <script>
-    // 跑马灯生成
     const marquee = document.getElementById('marqueeText');
     let messages = [];
     for (let i = 0; i < 50; i++) {
@@ -281,14 +269,12 @@
     }
     marquee.textContent = messages.join('');
 
-    // WhatsApp 随机跳转
     function goToRandomWhatsApp() {
       const numbers = ['60142820944', '60142820304', '60178986642'];
       const chosen = numbers[Math.floor(Math.random() * numbers.length)];
       window.open(`https://wa.me/${chosen}`, '_blank');
     }
 
-    // 浮动按钮切换
     function toggleChat() {
       const box = document.getElementById('chatBox');
       box.style.display = box.style.display === 'block' ? 'none' : 'block';
@@ -297,7 +283,6 @@
       document.getElementById('waBtn').href = `https://wa.me/${chosen}`;
     }
 
-    // 轮播图
     let current = 0;
     const slides = document.getElementById('slides');
     const dots = document.querySelectorAll('.dot');
@@ -318,7 +303,9 @@
       dots[current].classList.add('active');
     }
 
-    setInterval(() => moveSlide(1), 6000);
+    setInterval(() => {
+      moveSlide(1);
+    }, 6000);
   </script>
 </body>
 </html>

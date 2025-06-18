@@ -33,6 +33,7 @@
       font-weight: bold;
     }
 
+    /* 跑马灯 */
     .marquee {
       background: #111;
       color: #0f0;
@@ -51,15 +52,27 @@
       100% { transform: translateX(-100%); }
     }
 
+    /* 中间轮播容器包裹器 */
+    .slider-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60vh;
+    }
+
+    /* 轮播图 */
     .slider {
       position: relative;
-      width: 100vh;
+      width: 90vw;
+      max-width: 1000px;
       height: 50vh;
       overflow: hidden;
     }
 
     .slides {
       display: flex;
+      width: 300%;
+      height: 100%;
       transition: transform 0.5s ease-in-out;
     }
 
@@ -67,7 +80,6 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      flex-shrink: 0;
     }
 
     .nav-btn {
@@ -106,6 +118,7 @@
       background-color: #fff;
     }
 
+    /* 浮动按钮 */
     .chat-button {
       position: fixed;
       bottom: 80px;
@@ -180,19 +193,21 @@
     <span id="marqueeText"></span>
   </div>
 
-  <!-- 海报轮播 -->
-  <div class="slider">
-    <div class="slides" id="slides">
-      <img src="https://i.imgur.com/qHVecWQ.gif" alt="Banner 1">
-      <img src="https://i.imgur.com/Juv3NUQ.gif" alt="Banner 2">
-      <img src="https://i.imgur.com/QbBLG0O.png" alt="Banner 3">
-    </div>
-    <div class="nav-btn prev" onclick="moveSlide(-1)">❮</div>
-    <div class="nav-btn next" onclick="moveSlide(1)">❯</div>
-    <div class="dots">
-      <span class="dot active" onclick="currentSlide(0)"></span>
-      <span class="dot" onclick="currentSlide(1)"></span>
-      <span class="dot" onclick="currentSlide(2)"></span>
+  <!-- 居中海报轮播 -->
+  <div class="slider-wrapper">
+    <div class="slider">
+      <div class="slides" id="slides">
+        <img src="https://i.imgur.com/qHVecWQ.gif" alt="Banner 1">
+        <img src="https://i.imgur.com/Juv3NUQ.gif" alt="Banner 2">
+        <img src="https://i.imgur.com/QbBLG0O.png" alt="Banner 3">
+      </div>
+      <div class="nav-btn prev" onclick="moveSlide(-1)">❮</div>
+      <div class="nav-btn next" onclick="moveSlide(1)">❯</div>
+      <div class="dots">
+        <span class="dot active" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+      </div>
     </div>
   </div>
 
@@ -209,7 +224,7 @@
   </div>
 
   <script>
-    // 跑马灯内容生成
+    // 跑马灯生成
     const marquee = document.getElementById('marqueeText');
     let messages = [];
     for (let i = 0; i < 50; i++) {
@@ -226,10 +241,12 @@
       window.open(`https://wa.me/${chosen}`, '_blank');
     }
 
-    // 浮动客服按钮切换
+    // 浮动按钮切换
     function toggleChat() {
       const box = document.getElementById('chatBox');
       box.style.display = box.style.display === 'block' ? 'none' : 'block';
+
+      // 随机 WhatsApp 链接
       const numbers = ['60142820944', '60142820304', '60178986642'];
       const chosen = numbers[Math.floor(Math.random() * numbers.length)];
       document.getElementById('waBtn').href = `https://wa.me/${chosen}`;
@@ -256,6 +273,7 @@
       dots[current].classList.add('active');
     }
 
+    // 自动轮播
     setInterval(() => {
       moveSlide(1);
     }, 6000);

@@ -98,12 +98,13 @@
   const marquee = document.querySelector('.marquee span');
   let messages = [];
   for (let i = 0; i < 50; i++) {
-    let front = Math.floor(Math.random() * 900 + 100).toString();
-    let back = Math.floor(Math.random() * 9000 + 1000).toString();
-    let phone = `+601${front}****${back}`;
+    let suffix = Math.floor(Math.random() * 9000 + 1000); // 随机四位数
     let amount = 'RM' + Math.floor(Math.random() * 900 + 100);
-    messages.push(`🎉${phone} Won ${amount} | `);
+    messages.push(`🎉+601******${suffix} Won ${amount} | `);
   }
+  marquee.textContent = messages.join('');
+</script>
+
   marquee.textContent = messages.join('');
 </script>
 

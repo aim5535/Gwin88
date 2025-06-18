@@ -14,19 +14,12 @@
     header {
       background: #e50914;
       display: flex;
-      justify-content: center; /* logo居中 */
+      justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
-      position: relative;
     }
     .logo img {
-      height: 80px; /* 电脑版较大 */
-    }
-    .signup-link {
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
+      height: 40px;
     }
     .signup-link a {
       background-color: #ffcc00;
@@ -35,21 +28,14 @@
       border-radius: 4px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 18px;
-      display: inline-block;
-      min-width: 120px;
-      text-align: center;
     }
 
     /* 跑马灯 */
     .marquee {
       background: #111;
-      color: #ffd700; /* 纯金色 */
+      color: gold;
       overflow: hidden;
       white-space: nowrap;
-      font-weight: bold;
-      padding: 5px 0;
-      font-size: 20px;
     }
     .marquee span {
       display: inline-block;
@@ -66,11 +52,8 @@
       position: relative;
       width: 1000px;
       height: 500px;
-      margin: 20px auto 40px auto;
+      margin: 30px auto;
       overflow: hidden;
-      border-radius: 10px;
-      box-shadow: 0 0 10px #ffcc00;
-      background: #111;
     }
     .slides {
       display: flex;
@@ -94,7 +77,6 @@
       cursor: pointer;
       z-index: 2;
       user-select: none;
-      border-radius: 5px;
     }
     .prev { left: 10px; }
     .next { right: 10px; }
@@ -104,80 +86,19 @@
       bottom: 10px;
       width: 100%;
       text-align: center;
+      z-index: 2;
     }
     .dot {
       display: inline-block;
-      height: 12px;
-      width: 12px;
-      margin: 0 6px;
+      height: 10px;
+      width: 10px;
+      margin: 0 4px;
       background-color: #bbb;
       border-radius: 50%;
       cursor: pointer;
-      transition: background-color 0.3s ease;
     }
     .active {
       background-color: #fff;
-    }
-
-    /* 公司介绍 */
-    .description {
-      max-width: 1000px;
-      margin: 0 auto 40px auto;
-      text-align: center;
-      font-size: 26px;
-      line-height: 1.5;
-      padding: 0 15px;
-    }
-
-    /* 特点四个盒子 */
-    .features {
-      max-width: 1000px;
-      margin: 0 auto 60px auto;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
-      padding: 0 15px;
-    }
-    .feature-box {
-      flex: 1 1 220px;
-      background: #111;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 5px #ffcc00;
-      color: #ffd700;
-      text-align: left;
-    }
-    .feature-box h3 {
-      margin-top: 0;
-      font-size: 22px;
-    }
-    .feature-box p {
-      font-size: 18px;
-      color: #fff;
-      margin-bottom: 0;
-    }
-
-    /* 按钮 */
-    .join-btn {
-      display: block;
-      width: 300px;
-      margin: 0 auto 40px auto;
-      background-color: #ffcc00;
-      color: #111;
-      text-align: center;
-      font-weight: bold;
-      font-size: 22px;
-      padding: 15px 0;
-      border-radius: 8px;
-      cursor: pointer;
-      user-select: none;
-      text-decoration: none;
-      box-shadow: 0 0 15px #ffcc00;
-      transition: background-color 0.3s ease;
-    }
-    .join-btn:hover {
-      background-color: #e6b800;
     }
 
     /* 浮动按钮 */
@@ -208,8 +129,6 @@
       border-radius: 10px;
       padding: 10px 15px;
       width: 250px;
-      font-size: 14px;
-      box-shadow: 0 0 15px #ffcc00;
     }
     .chat-box p {
       margin: 5px 0;
@@ -223,84 +142,128 @@
       text-decoration: none;
       color: white;
       font-weight: bold;
-      user-select: none;
     }
     .btn-wa { background: #25D366; }
     .btn-tg { background: #0088cc; }
     .btn-live { background: #00cfc5; }
 
-    /* 手机端响应式 */
+    /* 公司介绍区 */
+    .company-info {
+      max-width: 1000px;
+      margin: 0 auto 40px;
+      padding: 0 15px;
+      text-align: center;
+    }
+    .company-info h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    .company-info p {
+      font-size: 1.1rem;
+      color: #ddd;
+    }
+
+    /* 四个标题介绍 */
+    .features {
+      max-width: 1000px;
+      margin: 0 auto 40px;
+      padding: 0 15px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      color: white;
+    }
+    .feature-item {
+      flex: 1 1 220px;
+      margin: 10px;
+      background: #111;
+      border-radius: 8px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .feature-item h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+      color: #ffcc00;
+    }
+    .feature-item p {
+      margin: 0;
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    /* 加入按钮 */
+    .join-btn-container {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .join-btn {
+      display: inline-block;
+      background: gold;
+      color: black;
+      font-weight: bold;
+      padding: 15px 40px;
+      border-radius: 6px;
+      font-size: 1.3rem;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.3s ease;
+      border: none;
+    }
+    .join-btn:hover {
+      background: #e6c200;
+    }
+
+    /* 手机端样式 */
     @media screen and (max-width: 600px) {
+      header {
+        flex-direction: column;
+        padding: 15px;
+      }
+      .logo img {
+        height: 60px;
+        margin-bottom: 10px;
+      }
+      .signup-link a {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+      }
+
       .slider {
         width: 100%;
         height: auto;
         margin: 20px auto 30px auto;
       }
-
+      .slides {
+        width: 100% !important;
+        flex-wrap: nowrap;
+      }
       .slides img {
-        width: 100vw;
-        height: auto;
+        width: 100% !important;
+        height: auto !important;
       }
 
-      .logo img {
-        height: 60px;
+      .company-info h1 {
+        font-size: 1.6rem;
       }
-
-      .signup-link {
-        right: 10px;
+      .company-info p {
+        font-size: 1.1rem;
       }
-      .signup-link a {
-        font-size: 16px;
-        padding: 6px 12px;
-        min-width: 100px;
-      }
-
-      .description {
-        font-size: 20px;
-        padding: 0 10px;
-      }
-
       .features {
         flex-direction: column;
-        gap: 15px;
-        max-width: 90vw;
-        margin-bottom: 40px;
+        max-width: 90%;
+        margin: 0 auto 40px;
+      }
+      .feature-item {
+        margin: 10px auto;
+        width: 90%;
       }
 
-      .feature-box {
-        flex: 1 1 auto;
-        font-size: 18px;
-        padding: 15px;
-      }
-
-      .feature-box h3 {
-        font-size: 20px;
-      }
-
-      .feature-box p {
-        font-size: 16px;
-      }
-
-      .join-btn {
-        width: 90vw;
-        font-size: 20px;
-        padding: 15px 0;
-      }
-
+      /* 放大浮动按钮 */
       .chat-toggle {
-        width: 70px;
-        height: 70px;
-      }
-
-      .chat-box {
-        font-size: 16px;
-        width: 280px;
-        padding: 15px 20px;
-      }
-
-      .chat-box .btn {
-        font-size: 16px;
-        padding: 12px 0;
+        width: 80px;
+        height: 80px;
       }
     }
   </style>
@@ -310,7 +273,7 @@
   <!-- 顶部栏 -->
   <header>
     <div class="logo">
-      <img src="logo.png" alt="Logo" />
+      <img src="logo.png" alt="Logo">
     </div>
     <div class="signup-link">
       <a href="#" onclick="goToRandomWhatsApp()">SIGN UP</a>
@@ -325,9 +288,9 @@
   <!-- 海报轮播 -->
   <div class="slider">
     <div class="slides" id="slides">
-      <img src="https://i.imgur.com/LPgEU3I.jpg" alt="Banner 1" />
-      <img src="https://i.imgur.com/5MKzeVa.jpg" alt="Banner 2" />
-      <img src="https://i.imgur.com/MhFbzkz.jpg" alt="Banner 3" />
+      <img src="https://i.imgur.com/LPgEU3I.jpg" alt="Banner 1">
+      <img src="https://i.imgur.com/5MKzeVa.jpg" alt="Banner 2">
+      <img src="https://i.imgur.com/MhFbzkz.jpg" alt="Banner 3">
     </div>
     <div class="nav-btn prev" onclick="moveSlide(-1)">❮</div>
     <div class="nav-btn next" onclick="moveSlide(1)">❯</div>
@@ -339,32 +302,35 @@
   </div>
 
   <!-- 公司介绍 -->
-  <div class="description">
-    GWIN88 是一家领先的娱乐游戏平台，致力于为玩家提供丰富多样的游戏体验和安全可靠的服务。
-  </div>
+  <section class="company-info">
+    <h1>关于 GWIN88 娱乐平台</h1>
+    <p>GWIN88 提供多样化的娱乐体验，包括丰富的老虎机、真人赌场、扑克以及体育投注，致力于为玩家打造安全、刺激和优质的服务环境。</p>
+  </section>
 
-  <!-- 特点 -->
-  <div class="features">
-    <div class="feature-box">
+  <!-- 四个功能介绍 -->
+  <section class="features">
+    <div class="feature-item">
       <h3>Huge Selection of Games</h3>
       <p>Explore slots, live casino, poker, and sports betting.</p>
     </div>
-    <div class="feature-box">
+    <div class="feature-item">
       <h3>Safe & Secure</h3>
       <p>Advanced encryption to protect your data.</p>
     </div>
-    <div class="feature-box">
+    <div class="feature-item">
       <h3>Exciting Promotions</h3>
       <p>Claim bonuses and special offers as you play.</p>
     </div>
-    <div class="feature-box">
+    <div class="feature-item">
       <h3>24/7 Support</h3>
       <p>Our team is available around the clock to assist you.</p>
     </div>
-  </div>
+  </section>
 
   <!-- 加入按钮 -->
-  <a href="#" class="join-btn">I WANT TO JOIN</a>
+  <div class="join-btn-container">
+    <button class="join-btn" onclick="alert('感谢您的加入请求！')">I WANT TO JOIN</button>
+  </div>
 
   <!-- 浮动客服按钮 -->
   <div class="chat-button">
@@ -412,6 +378,17 @@
     const slides = document.getElementById('slides');
     const dots = document.querySelectorAll('.dot');
 
+    function updateSlide() {
+      const isMobile = window.innerWidth <= 600;
+      if (isMobile) {
+        slides.style.transform = `translateX(-${current * 100}%)`;
+      } else {
+        slides.style.transform = `translateX(-${current * 1000}px)`;
+      }
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[current].classList.add('active');
+    }
+
     function moveSlide(step) {
       current = (current + step + 3) % 3;
       updateSlide();
@@ -422,17 +399,16 @@
       updateSlide();
     }
 
-    function updateSlide() {
-      slides.style.transform = `translateX(-${current * 1000}px)`;
-      dots.forEach(dot => dot.classList.remove('active'));
-      dots[current].classList.add('active');
-    }
+    // 窗口尺寸变化时更新轮播位置
+    window.addEventListener('resize', updateSlide);
+
+    // 初始化轮播显示
+    updateSlide();
 
     // 自动轮播
     setInterval(() => {
       moveSlide(1);
     }, 6000);
   </script>
-
 </body>
 </html>

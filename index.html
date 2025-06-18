@@ -11,6 +11,7 @@
       background: #000;
       color: #fff;
     }
+
     header {
       background: #e50914;
       display: flex;
@@ -18,9 +19,11 @@
       align-items: center;
       padding: 10px 20px;
     }
+
     .logo img {
       height: 40px;
     }
+
     .signup-link a {
       background-color: #ffcc00;
       color: #111;
@@ -30,39 +33,44 @@
       font-weight: bold;
     }
 
-    /* 跑马灯 */
     .marquee {
       background: #111;
       color: #0f0;
       overflow: hidden;
       white-space: nowrap;
     }
+
     .marquee span {
       display: inline-block;
       padding-left: 100%;
       animation: scroll 80s linear infinite;
     }
+
     @keyframes scroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-100%); }
     }
 
-    /* 轮播图 */
     .slider {
       position: relative;
+      width: 100%;
       height: 50vh;
       overflow: hidden;
     }
+
     .slides {
       display: flex;
       height: 100%;
       transition: transform 0.5s ease-in-out;
     }
+
     .slides img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      flex-shrink: 0;
     }
+
     .nav-btn {
       position: absolute;
       top: 50%;
@@ -74,6 +82,7 @@
       cursor: pointer;
       z-index: 2;
     }
+
     .prev { left: 10px; }
     .next { right: 10px; }
 
@@ -83,6 +92,7 @@
       width: 100%;
       text-align: center;
     }
+
     .dot {
       display: inline-block;
       height: 10px;
@@ -92,17 +102,18 @@
       border-radius: 50%;
       cursor: pointer;
     }
+
     .active {
       background-color: #fff;
     }
 
-    /* 浮动按钮 */
     .chat-button {
       position: fixed;
       bottom: 80px;
       right: 20px;
       z-index: 9999;
     }
+
     .chat-toggle {
       width: 60px;
       height: 60px;
@@ -114,6 +125,7 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.4);
       cursor: pointer;
     }
+
     .chat-box {
       display: none;
       position: absolute;
@@ -125,9 +137,11 @@
       padding: 10px 15px;
       width: 250px;
     }
+
     .chat-box p {
       margin: 5px 0;
     }
+
     .chat-box .btn {
       display: block;
       margin: 5px 0;
@@ -138,6 +152,7 @@
       color: white;
       font-weight: bold;
     }
+
     .btn-wa { background: #25D366; }
     .btn-tg { background: #0088cc; }
     .btn-live { background: #00cfc5; }
@@ -195,7 +210,7 @@
   </div>
 
   <script>
-    // 跑马灯生成
+    // 跑马灯内容生成
     const marquee = document.getElementById('marqueeText');
     let messages = [];
     for (let i = 0; i < 50; i++) {
@@ -212,12 +227,10 @@
       window.open(`https://wa.me/${chosen}`, '_blank');
     }
 
-    // 浮动按钮切换
+    // 浮动客服按钮切换
     function toggleChat() {
       const box = document.getElementById('chatBox');
       box.style.display = box.style.display === 'block' ? 'none' : 'block';
-
-      // 随机 WhatsApp 链接
       const numbers = ['60142820944', '60142820304', '60178986642'];
       const chosen = numbers[Math.floor(Math.random() * numbers.length)];
       document.getElementById('waBtn').href = `https://wa.me/${chosen}`;
@@ -244,7 +257,6 @@
       dots[current].classList.add('active');
     }
 
-    // 自动轮播
     setInterval(() => {
       moveSlide(1);
     }, 6000);

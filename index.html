@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GWIN88 | 娱乐平台</title>
   <style>
     body {
@@ -11,21 +11,36 @@
       background: #000;
       color: #fff;
     }
+    /* 顶部红色背景全屏 */
     header {
       background: #e50914;
-      max-width: 1000px;       /* 限制最大宽度 */
-      margin: 0 auto;          /* 水平居中 */
+      width: 100vw;
+      position: fixed;
+      top: 0; left: 0;
+      z-index: 1000;
+      padding: 10px 0;
+      display: flex;
+      justify-content: center; /* 居中最大宽度区域 */
+    }
+    /* 限制内部宽度1000px */
+    .header-inner {
+      width: 100%;
+      max-width: 1000px;
       display: flex;
       align-items: center;
-      padding: 10px 20px;
       position: relative;
+      padding: 0 20px;
+      box-sizing: border-box;
     }
     .logo img {
-      height: 80px; /* 电脑版较大 */
+      height: 80px;
     }
+    /* SIGN UP 按钮 电脑版右对齐（最大宽度内） */
     .signup-link {
-      margin-left: auto; /* 右对齐 */
-      position: static;  /* 取消绝对定位 */
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
     }
     .signup-link a {
       background-color: #ffcc00;
@@ -38,6 +53,8 @@
       display: inline-block;
       min-width: 120px;
       text-align: center;
+      cursor: pointer;
+      user-select: none;
     }
 
     /* 跑马灯 */
@@ -49,6 +66,7 @@
       font-weight: bold;
       padding: 5px 0;
       font-size: 20px;
+      margin-top: 110px; /* 给顶部留位置 */
     }
     .marquee span {
       display: inline-block;
@@ -97,12 +115,12 @@
     }
     .prev { left: 10px; }
     .next { right: 10px; }
-
     .dots {
       position: absolute;
       bottom: 10px;
       width: 100%;
       text-align: center;
+      z-index: 3;
     }
     .dot {
       display: inline-block;
@@ -157,7 +175,7 @@
       margin-bottom: 0;
     }
 
-    /* 按钮 */
+    /* 加入按钮 */
     .join-btn {
       display: block;
       width: 300px;
@@ -179,7 +197,7 @@
       background-color: #e6b800;
     }
 
-    /* 浮动按钮 */
+    /* 浮动客服按钮 */
     .chat-button {
       position: fixed;
       bottom: 80px;
@@ -228,77 +246,108 @@
     .btn-tg { background: #0088cc; }
     .btn-live { background: #00cfc5; }
 
-    /* 手机端响应式 */
+    /* --- 手机端响应式 --- */
     @media screen and (max-width: 600px) {
-      .slider {
-        width: 100%;
-        height: auto;
-        margin: 20px auto 30px auto;
+      header {
+        padding: 10px 10px;
       }
-
-      .slides img {
-        width: 100vw;
-        height: auto;
+      .header-inner {
+        max-width: 100vw;
+        padding: 0 10px;
+        justify-content: flex-start;
+        position: relative;
       }
-
-      .logo img {
-        height: 60px;
-      }
-
       .signup-link {
-        margin-left: 0;
-        position: static;
+        position: fixed !important;
+        top: 10px;
         right: 10px;
+        transform: none !important;
+        z-index: 1100;
       }
       .signup-link a {
         font-size: 16px;
         padding: 6px 12px;
         min-width: 100px;
       }
-
-      .description {
-        font-size: 20px;
-        padding: 0 10px;
+      .logo img {
+        height: 60px;
       }
-
+      .marquee {
+        margin-top: 80px;
+        font-size: 16px;
+      }
+      /* 轮播容器宽高改成宽100vw，高自动 */
+      .slider {
+        width: 100vw;
+        height: auto;
+        margin: 20px auto 30px auto;
+      }
+      /* 轮播图片宽度100vw，高自适应 */
+      .slides {
+        width: 100%;
+        transition: transform 0.5s ease-in-out;
+        /* 一次只显示一张，不能横排三张 */
+        flex-wrap: nowrap;
+      }
+      .slides img {
+        width: 100vw;
+        height: auto;
+        object-fit: cover;
+      }
+      /* 导航按钮 */
+      .nav-btn {
+        font-size: 1.8rem;
+        padding: 5px 8px;
+      }
+      /* 点按钮调整 */
+      .dots {
+        bottom: 5px;
+      }
+      /* 修改轮播逻辑：每次滑动 100vw */
+      /* 手机端每次只显示一张 */
+      
+      /* 公司介绍字体放大 */
+      .description {
+        font-size: 22px;
+        padding: 0 15px;
+        max-width: 100vw;
+        margin: 0 auto 30px auto;
+      }
+      /* 四个盒子改为竖排 */
       .features {
         flex-direction: column;
-        gap: 15px;
         max-width: 90vw;
-        margin-bottom: 40px;
+        margin: 0 auto 40px auto;
+        gap: 15px;
+        padding: 0 15px;
       }
-
       .feature-box {
-        flex: 1 1 auto;
         font-size: 18px;
         padding: 15px;
       }
-
       .feature-box h3 {
         font-size: 20px;
       }
-
       .feature-box p {
         font-size: 16px;
       }
-
+      /* 加入按钮宽度100vw减边距 */
       .join-btn {
         width: 90vw;
         font-size: 20px;
         padding: 15px 0;
+        margin-bottom: 30px;
       }
-
+      /* 浮动客服按钮变大 */
       .chat-toggle {
         width: 70px;
         height: 70px;
       }
-
       .chat-box {
         font-size: 16px;
         width: 280px;
         padding: 15px 20px;
       }
-
       .chat-box .btn {
         font-size: 16px;
         padding: 12px 0;
@@ -310,11 +359,13 @@
 
   <!-- 顶部栏 -->
   <header>
-    <div class="logo">
-      <img src="logo.png" alt="Logo" />
-    </div>
-    <div class="signup-link">
-      <a href="#" onclick="goToRandomWhatsApp()">SIGN UP</a>
+    <div class="header-inner">
+      <div class="logo">
+        <img src="logo.png" alt="Logo" />
+      </div>
+      <div class="signup-link">
+        <a href="#" onclick="goToRandomWhatsApp()">SIGN UP</a>
+      </div>
     </div>
   </header>
 
@@ -324,18 +375,18 @@
   </div>
 
   <!-- 海报轮播 -->
-  <div class="slider">
+  <div class="slider" aria-label="Image Slider">
     <div class="slides" id="slides">
-      <img src="https://i.imgur.com/LPgEU3I.jpg" alt="Banner 1" />
-      <img src="https://i.imgur.com/5MKzeVa.jpg" alt="Banner 2" />
-      <img src="https://i.imgur.com/MhFbzkz.jpg" alt="Banner 3" />
+      <img src="https://i.imgur.com/qHVecWQ.gif" alt="Banner 1" />
+      <img src="https://i.imgur.com/Juv3NUQ.gif" alt="Banner 2" />
+      <img src="https://i.imgur.com/QbBLG0O.png" alt="Banner 3" />
     </div>
-    <div class="nav-btn prev" onclick="moveSlide(-1)">❮</div>
-    <div class="nav-btn next" onclick="moveSlide(1)">❯</div>
+    <div class="nav-btn prev" onclick="moveSlide(-1)" aria-label="Previous Slide">❮</div>
+    <div class="nav-btn next" onclick="moveSlide(1)" aria-label="Next Slide">❯</div>
     <div class="dots">
-      <span class="dot active" onclick="currentSlide(0)"></span>
-      <span class="dot" onclick="currentSlide(1)"></span>
-      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot active" onclick="currentSlide(0)" aria-label="Slide 1"></span>
+      <span class="dot" onclick="currentSlide(1)" aria-label="Slide 2"></span>
+      <span class="dot" onclick="currentSlide(2)" aria-label="Slide 3"></span>
     </div>
   </div>
 
@@ -365,16 +416,16 @@
   </div>
 
   <!-- 加入按钮 -->
-  <a href="#" class="join-btn">I WANT TO JOIN</a>
+  <a href="#" class="join-btn" onclick="goToRandomWhatsApp()">I WANT TO JOIN</a>
 
   <!-- 浮动客服按钮 -->
   <div class="chat-button">
-    <div class="chat-toggle" onclick="toggleChat()"></div>
-    <div class="chat-box" id="chatBox">
+    <div class="chat-toggle" onclick="toggleChat()" aria-label="Toggle chat"></div>
+    <div class="chat-box" id="chatBox" role="dialog" aria-modal="true" aria-hidden="true">
       <p>Hi: 想了解今日优惠吗?</p>
       <p>点击以下方式与我们联系：</p>
-      <a class="btn btn-wa" href="#" id="waBtn" target="_blank">WhatsApp</a>
-      <a class="btn btn-tg" href="https://t.me/Cs02easykaya" target="_blank">Telegram</a>
+      <a class="btn btn-wa" href="#" id="waBtn" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a class="btn btn-tg" href="https://t.me/Cs02easykaya" target="_blank" rel="noopener noreferrer">Telegram</a>
       <a class="btn btn-live" href="#" onclick="alert('Live Chat 模拟中')">Live Chat</a>
     </div>
   </div>
@@ -390,31 +441,43 @@
     }
     marquee.textContent = messages.join('');
 
-    // WhatsApp 随机跳转
+    // WhatsApp 号码列表
+    const whatsappNumbers = ['60142820944', '60142820304', '60178986642'];
+
+    // 点击随机跳转 WhatsApp
     function goToRandomWhatsApp() {
-      const numbers = ['60142820944', '60142820304', '60178986642'];
-      const chosen = numbers[Math.floor(Math.random() * numbers.length)];
+      const chosen = whatsappNumbers[Math.floor(Math.random() * whatsappNumbers.length)];
       window.open(`https://wa.me/${chosen}`, '_blank');
     }
 
-    // 浮动按钮切换
+    // 浮动按钮切换显示隐藏
     function toggleChat() {
       const box = document.getElementById('chatBox');
-      box.style.display = box.style.display === 'block' ? 'none' : 'block';
-
-      // 随机 WhatsApp 链接
-      const numbers = ['60142820944', '60142820304', '60178986642'];
-      const chosen = numbers[Math.floor(Math.random() * numbers.length)];
-      document.getElementById('waBtn').href = `https://wa.me/${chosen}`;
+      if (box.style.display === 'block') {
+        box.style.display = 'none';
+        box.setAttribute('aria-hidden', 'true');
+      } else {
+        box.style.display = 'block';
+        box.setAttribute('aria-hidden', 'false');
+        // 每次打开都随机 WhatsApp 号
+        const chosen = whatsappNumbers[Math.floor(Math.random() * whatsappNumbers.length)];
+        document.getElementById('waBtn').href = `https://wa.me/${chosen}`;
+      }
     }
 
-    // 轮播逻辑
+    // 轮播相关
     let current = 0;
     const slides = document.getElementById('slides');
     const dots = document.querySelectorAll('.dot');
 
+    // 判断手机或电脑，决定滑动宽度
+    function getSlideWidth() {
+      return window.innerWidth <= 600 ? window.innerWidth : 1000;
+    }
+
     function moveSlide(step) {
-      current = (current + step + 3) % 3;
+      const total = dots.length;
+      current = (current + step + total) % total;
       updateSlide();
     }
 
@@ -424,16 +487,21 @@
     }
 
     function updateSlide() {
-      slides.style.transform = `translateX(-${current * 1000}px)`;
+      const slideWidth = getSlideWidth();
+      slides.style.transform = `translateX(-${current * slideWidth}px)`;
       dots.forEach(dot => dot.classList.remove('active'));
       dots[current].classList.add('active');
     }
 
-    // 自动轮播
+    // 自动轮播6秒
     setInterval(() => {
       moveSlide(1);
     }, 6000);
-  </script>
 
+    // 页面加载时初始化
+    window.onload = updateSlide;
+    // 窗口大小变化时，刷新轮播位置
+    window.onresize = updateSlide;
+  </script>
 </body>
 </html>

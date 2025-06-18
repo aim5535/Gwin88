@@ -293,8 +293,8 @@
     let messages = [];
     for (let i = 0; i < 50; i++) {
       let suffix = Math.floor(1000 + Math.random() * 9000);
-      let amount = Math.floor(100.00 + Math.random() * 900.00);
-      messages.push(`🎉+601******${suffix} Won RM${amount} | `);
+      let amount = (100 + Math.random() * 900).toFixed(2);
+messages.push(`🎉+601******${suffix} Won RM${amount} | `);
     }
     marquee.textContent = messages.join('');
 

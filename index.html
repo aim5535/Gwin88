@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GWIN88 | 娱乐平台</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      text-align: center;
+    }
+    header {
+      background: #e50914;
+      padding: 1.2rem;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    .marquee {
+      background: #222;
+      color: #0f0;
+      padding: 0.5rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll 20s linear infinite;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    .features, .contact {
+      padding: 2rem 1rem;
+    }
+    .features h2, .contact h2 {
+      color: #ffcc00;
+      margin-bottom: 1rem;
+    }
+    .features ul {
+      list-style: none;
+      padding: 0;
+      font-size: 1.1rem;
+    }
+    .features ul li {
+      margin: 0.6rem 0;
+    }
+    .buttons a {
+      display: inline-block;
+      margin: 1rem;
+      padding: 1rem 2rem;
+      background: #e50914;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .buttons a:hover {
+      background: #b00610;
+    }
+  </style>
+</head>
+<body>
+  <header>欢迎来到 GWIN88 娱乐平台</header>
+
+  <div class="marquee">
+    <span>
+      <!-- Winning messages will be generated here -->
+    </span>
+  </div>
+
+  <section class="features">
+    <h2>平台特色</h2>
+    <ul>
+      <li>🌐 多平台支持：手机 / 平板 / 电脑</li>
+      <li>💰 高返水 & 快速出款</li>
+      <li>🎲 真人 / 体育 / 老虎机</li>
+      <li>🛡️ 安全保障 & 隐私保护</li>
+      <li>🕹️ 24小时客服支持</li>
+    </ul>
+  </section>
+
+  <section class="contact">
+    <h2>立即联系</h2>
+    <div class="buttons">
+      <a href="https://t.me/Cs02easykaya" target="_blank">📲 Telegram</a>
+      <a href="https://wa.me/0142820304" target="_blank">📞 WhatsApp</a>
+      <a href="#" onclick="alert('请联系客服开启Live Chat');">💬 Live Chat</a>
+    </div>
+  </section>
+
+  <script>
+    const marquee = document.querySelector('.marquee span');
+    let messages = [];
+    for (let i = 0; i < 50; i++) {
+      let number = '+601';
+      number += Math.floor(Math.random() * 9000000 + 1000000).toString().replace(/(\d{3})(\d{4})/, '$1****$2');
+      let amount = 'RM' + Math.floor(Math.random() * 900 + 100);
+      messages.push(`${number} Won ${amount} | `);
+    }
+    marquee.textContent = messages.join('');
+  </script>
+</body>
+</html>

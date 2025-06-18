@@ -13,6 +13,36 @@
       text-align: center;
     }
 
+    /* 顶部导航栏 */
+    header {
+      background: #e50914;
+      padding: 0.8rem 1rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .signup-link a {
+      background-color: #ffcc00;
+      color: #111;
+      padding: 8px 14px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
     /* 跑马灯 */
     .marquee {
       background: #222;
@@ -132,6 +162,16 @@
 </head>
 <body>
 
+  <!-- ✅ 顶部导航栏 -->
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+    </div>
+    <div class="signup-link">
+      <a href="#" onclick="goToRandomWhatsApp()">SIGN UP</a>
+    </div>
+  </header>
+
   <!-- ✅ 跑马灯 -->
   <div class="marquee">
     <span id="marqueeText"></span>
@@ -156,9 +196,9 @@
     </div>
   </div>
 
-  <!-- ✅ JS 逻辑 -->
+  <!-- ✅ 脚本逻辑 -->
   <script>
-    // 跑马灯生成文字
+    // 跑马灯内容
     const marquee = document.getElementById('marqueeText');
     let messages = [];
     for (let i = 0; i < 50; i++) {
@@ -177,10 +217,17 @@
       banners[current].classList.add('active');
     }, 3000);
 
-    // 展开客服按钮
+    // 客服展开/收起
     function toggleSupport() {
       const box = document.getElementById('supportBox');
       box.style.display = box.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // SIGN UP 随机 WhatsApp 跳转
+    function goToRandomWhatsApp() {
+      const numbers = ['60142820944', '60142820304', '60178986642'];
+      const chosen = numbers[Math.floor(Math.random() * numbers.length)];
+      window.open(`https://wa.me/${chosen}`, '_blank');
     }
   </script>
 

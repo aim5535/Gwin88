@@ -12,25 +12,20 @@
       color: #fff;
     }
 
-    /* 顶部导航栏 */
     header {
       background: #e50914;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       padding: 10px 20px;
       position: relative;
     }
-    header .logo {
+    .logo img {
+      height: 50px;
+    }
+    .signup-link {
       position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    header .logo img {
-      height: 40px;
-    }
-    header .signup-link {
-      z-index: 1;
+      right: 20px;
     }
     .signup-link a {
       background-color: #ffcc00;
@@ -40,11 +35,7 @@
       text-decoration: none;
       font-weight: bold;
     }
-    .spacer {
-      width: 60px;
-    }
 
-    /* 跑马灯 */
     .marquee {
       background: #111;
       color: #0f0;
@@ -61,18 +52,22 @@
       100% { transform: translateX(-100%); }
     }
 
-    /* 轮播图 */
+    .slider-container {
+      display: flex;
+      justify-content: center;
+      margin: 20px auto;
+    }
+
     .slider {
       position: relative;
       width: 1000px;
       height: 500px;
-      margin: 30px auto;
       overflow: hidden;
-      border-radius: 10px;
     }
+
     .slides {
       display: flex;
-      width: 3000px;
+      width: 300%;
       height: 100%;
       transition: transform 0.5s ease-in-out;
     }
@@ -81,6 +76,7 @@
       height: 500px;
       object-fit: cover;
     }
+
     .nav-btn {
       position: absolute;
       top: 50%;
@@ -114,7 +110,6 @@
       background-color: #fff;
     }
 
-    /* 浮动客服按钮 */
     .chat-button {
       position: fixed;
       bottom: 80px;
@@ -159,7 +154,39 @@
     .btn-tg { background: #0088cc; }
     .btn-live { background: #00cfc5; }
 
-    @media (max-width: 1024px) {
+    /* 公司介绍 */
+    .about-section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+    .about-section h2 {
+      font-size: 2rem;
+      color: #ffcc00;
+    }
+    .about-section h3 {
+      color: #0f0;
+      margin-top: 30px;
+    }
+    .about-section ul {
+      list-style: none;
+      padding: 0;
+      line-height: 1.8;
+    }
+    .about-section a {
+      display: inline-block;
+      margin-top: 30px;
+      background: #ffcc00;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: bold;
+      color: #000;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
       .slider {
         width: 100%;
         height: auto;
@@ -173,9 +200,8 @@
 </head>
 <body>
 
-  <!-- 顶部栏 -->
+  <!-- 顶部导航 -->
   <header>
-    <div class="spacer"></div>
     <div class="logo">
       <img src="logo.png" alt="Logo">
     </div>
@@ -189,23 +215,25 @@
     <span id="marqueeText"></span>
   </div>
 
-  <!-- 海报轮播 -->
-  <div class="slider">
-    <div class="slides" id="slides">
-      <img src="https://imgur.com/LPgEU3I.png" alt="海报 1">
-      <img src="https://imgur.com/5MKzeVa.png" alt="海报 2">
-      <img src="https://imgur.com/MhFbzkz.png" alt="海报 3">
-    </div>
-    <div class="nav-btn prev" onclick="moveSlide(-1)">❮</div>
-    <div class="nav-btn next" onclick="moveSlide(1)">❯</div>
-    <div class="dots">
-      <span class="dot active" onclick="currentSlide(0)"></span>
-      <span class="dot" onclick="currentSlide(1)"></span>
-      <span class="dot" onclick="currentSlide(2)"></span>
+  <!-- 轮播区域 -->
+  <div class="slider-container">
+    <div class="slider">
+      <div class="slides" id="slides">
+        <img src="https://imgur.com/LPgEU3I.jpg" alt="Banner 1">
+        <img src="https://imgur.com/5MKzeVa.jpg" alt="Banner 2">
+        <img src="https://imgur.com/MhFbzkz.jpg" alt="Banner 3">
+      </div>
+      <div class="nav-btn prev" onclick="moveSlide(-1)">❮</div>
+      <div class="nav-btn next" onclick="moveSlide(1)">❯</div>
+      <div class="dots">
+        <span class="dot active" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+      </div>
     </div>
   </div>
 
-  <!-- 浮动客服按钮 -->
+  <!-- 客服按钮 -->
   <div class="chat-button">
     <div class="chat-toggle" onclick="toggleChat()"></div>
     <div class="chat-box" id="chatBox">
@@ -217,9 +245,28 @@
     </div>
   </div>
 
-  <!-- 脚本 -->
+  <!-- 公司介绍 -->
+  <section class="about-section">
+    <h2>关于 GWIN88</h2>
+    <p style="font-size: 1.2rem; margin-top: 10px;">亚洲领先的线上娱乐平台</p>
+    <p style="margin-top: 20px; line-height: 1.6;">
+      GWIN88 是一个专业且值得信赖的线上娱乐平台，致力于为玩家提供最全面、最安全、最刺激的博彩体验。
+    </p>
+    <p style="margin-top: 20px; line-height: 1.6;">
+      平台拥有丰富多样的游戏选择，包括体育博彩、真人娱乐、电子老虎机、彩票和捕鱼等，满足不同玩家的娱乐需求。
+    </p>
+    <h3>为什么选择我们？</h3>
+    <ul>
+      <li>✅ 马来西亚玩家专属优惠与活动</li>
+      <li>✅ 极速存提款，支持多种付款方式</li>
+      <li>✅ 24小时在线客服支持</li>
+      <li>✅ 手机、平板、电脑全平台适配</li>
+    </ul>
+    <a href="#" onclick="goToRandomWhatsApp()">立即注册，领取专属奖励</a>
+  </section>
+
   <script>
-    // 跑马灯消息生成
+    // 跑马灯生成
     const marquee = document.getElementById('marqueeText');
     let messages = [];
     for (let i = 0; i < 50; i++) {
@@ -240,13 +287,12 @@
     function toggleChat() {
       const box = document.getElementById('chatBox');
       box.style.display = box.style.display === 'block' ? 'none' : 'block';
-
       const numbers = ['60142820944', '60142820304', '60178986642'];
       const chosen = numbers[Math.floor(Math.random() * numbers.length)];
       document.getElementById('waBtn').href = `https://wa.me/${chosen}`;
     }
 
-    // 轮播图控制
+    // 轮播图
     let current = 0;
     const slides = document.getElementById('slides');
     const dots = document.querySelectorAll('.dot');
@@ -267,11 +313,7 @@
       dots[current].classList.add('active');
     }
 
-    // 自动轮播
-    setInterval(() => {
-      moveSlide(1);
-    }, 6000);
+    setInterval(() => moveSlide(1), 6000);
   </script>
-
 </body>
 </html>

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GWIN88 | 娱乐平台</title>
   <style>
     body {
@@ -12,7 +12,6 @@
       color: #fff;
       text-align: center;
     }
-
     header {
       background: #e50914;
       padding: 0.8rem 1rem;
@@ -22,200 +21,12 @@
       justify-content: space-between;
       align-items: center;
     }
-
-    .logo {
-      display: flex;
-      align-items: center;
-    }
-
     .logo img {
       height: 40px;
     }
-
     .signup-link a {
       background-color: #ffcc00;
       color: #111;
       padding: 8px 14px;
       border-radius: 4px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.9rem;
-    }
-
-    .marquee {
-      background: #222;
-      color: #0f0;
-      padding: 0.5rem 0;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    .marquee span {
-      display: inline-block;
-      padding-left: 100%;
-      animation: scroll 80s linear infinite;
-    }
-
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
-
-    .features, .contact {
-      padding: 2rem 1rem;
-    }
-
-    .features h2, .contact h2 {
-      color: #ffcc00;
-      margin-bottom: 1rem;
-    }
-
-    .features ul {
-      list-style: none;
-      padding: 0;
-      font-size: 1.1rem;
-    }
-
-    .features ul li {
-      margin: 0.6rem 0;
-    }
-
-    .buttons a {
-      display: inline-block;
-      margin: 1rem;
-      padding: 1rem 2rem;
-      background: #e50914;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 5px;
-      transition: background 0.3s;
-    }
-
-    .buttons a:hover {
-      background: #b00610;
-    }
-
-    /* 左下角浮动按钮样式 */
-    .floating-button {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      z-index: 9999;
-    }
-
-    .floating-button .main-btn {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background-color: #e50914;
-      color: white;
-      font-size: 30px;
-      text-align: center;
-      line-height: 60px;
-      cursor: pointer;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    }
-
-    .floating-button .option-btns {
-      display: none;
-      flex-direction: column;
-      margin-bottom: 10px;
-      align-items: flex-start;
-    }
-
-    .floating-button .option-btns button {
-      display: flex;
-      align-items: center;
-      background-color: #444;
-      color: white;
-      border: none;
-      padding: 10px 14px;
-      margin: 6px 0;
-      border-radius: 6px;
-      font-size: 14px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .floating-button .option-btns button i {
-      margin-right: 8px;
-      font-size: 16px;
-    }
-
-    .whatsapp-btn { background-color: #25D366; }
-    .telegram-btn { background-color: #0088cc; }
-    .livechat-btn { background-color: #00cfc8; }
-
-    .option-btns button:hover {
-      opacity: 0.9;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="logo">
-      <img src="logo.png" alt="Logo">
-    </div>
-    <div class="signup-link">
-      <a href="#" onclick="goToRandomWhatsApp()">SIGN UP</a>
-    </div>
-  </header>
-
-  <div class="marquee">
-    <span></span>
-  </div>
-
-  <section class="features">
-    <h2>平台特色</h2>
-    <ul>
-      <li>🌐 多平台支持：手机 / 平板 / 电脑</li>
-      <li>💰 高返水 & 快速出款</li>
-      <li>🎲 真人 / 体育 / 老虎机</li>
-      <li>🛡️ 安全保障 & 隐私保护</li>
-      <li>🕹️ 24小时客服支持</li>
-    </ul>
-  </section>
-
-  <!-- 左下角浮动按钮 -->
-  <div class="floating-button">
-    <div class="option-btns" id="leftContactOptions">
-      <button class="whatsapp-btn" onclick="alert('WhatsApp 客服：每天 24 小时在线服务！')">
-        <i>📱</i> WhatsApp
-      </button>
-      <button class="telegram-btn" onclick="alert('Telegram 客服：欢迎加入我们的官方频道')">
-        <i>✈️</i> Telegram
-      </button>
-      <button class="livechat-btn" onclick="alert('Live Chat 模拟中... 请输入您的问题')">
-        <i>💬</i> Live Chat
-      </button>
-    </div>
-    <div class="main-btn" onclick="toggleLeftContact()">☰</div>
-  </div>
-
-  <script>
-    // 生成跑马灯信息
-    const marquee = document.querySelector('.marquee span');
-    let messages = [];
-    for (let i = 0; i < 50; i++) {
-      let suffix = Math.floor(Math.random() * 9000 + 1000);
-      let amount = 'RM' + Math.floor(Math.random() * 900 + 100);
-      messages.push(`🎉+601******${suffix} Won ${amount} | `);
-    }
-    marquee.textContent = messages.join('');
-
-    // 浮动按钮控制
-    function toggleLeftContact() {
-      const options = document.getElementById('leftContactOptions');
-      options.style.display = options.style.display === 'flex' ? 'none' : 'flex';
-    }
-
-    // Sign Up 随机 WhatsApp 跳转
-    function goToRandomWhatsApp() {
-      const numbers = ['60142820944', '60142820304', '60178986642'];
-      const chosen = numbers[Math.floor(Math.random() * numbers.length)];
-      window.open(`https://wa.me/${chosen}`, '_blank');
-    }
-  </script>
-</body>
-</html>
+      text-decoration: no

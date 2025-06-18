@@ -2,27 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GWIN88 | 娱乐平台</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #111;
+      background: #000;
       color: #fff;
       text-align: center;
     }
     header {
       background: #e50914;
       padding: 0.8rem 1rem;
-      font-size: 1.2rem;
-      font-weight: bold;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-    }
-    .logo {
-      display: flex;
       align-items: center;
     }
     .logo img {
@@ -35,7 +29,6 @@
       border-radius: 4px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 0.9rem;
     }
     .marquee {
       background: #222;
@@ -54,94 +47,78 @@
       100% { transform: translateX(-100%); }
     }
 
-    .features, .contact {
-      padding: 2rem 1rem;
+    /* 轮播图样式 */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
     }
-    .features h2, .contact h2 {
-      color: #ffcc00;
-      margin-bottom: 1rem;
+    .carousel-slide {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
     }
-    .features ul {
-      list-style: none;
-      padding: 0;
-      font-size: 1.1rem;
+    .carousel-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
-    .features ul li {
-      margin: 0.6rem 0;
+    .dots {
+      text-align: center;
+      margin-top: 10px;
     }
-    .buttons a {
+    .dot {
+      height: 12px;
+      width: 12px;
+      margin: 0 5px;
+      background-color: #888;
+      border-radius: 50%;
       display: inline-block;
-      margin: 1rem;
-      padding: 1rem 2rem;
-      background: #e50914;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 5px;
-      transition: background 0.3s;
+      cursor: pointer;
     }
-    .buttons a:hover {
-      background: #b00610;
+    .dot.active {
+      background-color: #fff;
     }
 
-    /* 浮动按钮样式 */
+    /* 浮动按钮 */
     .floating-button {
       position: fixed;
       bottom: 20px;
       right: 20px;
       z-index: 9999;
     }
-    .floating-button .main-btn {
+    .main-btn {
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      background-color: #e50914;
-      color: white;
-      font-size: 30px;
-      text-align: center;
-      line-height: 60px;
+      background-image: url("https://i.imgur.com/boCqKhp.jpeg");
+      background-size: cover;
+      border: 2px solid #fff;
       cursor: pointer;
       box-shadow: 0 2px 10px rgba(0,0,0,0.3);
     }
-    .floating-button .option-btns {
+    .option-btns {
       display: none;
       flex-direction: column;
       margin-bottom: 10px;
       align-items: flex-end;
     }
-    .floating-button .option-btns a {
-      background-color: #333;
-      color: white;
+    .option-btns a {
       text-decoration: none;
-      padding: 8px 14px;
-      margin: 4px 0;
-      border-radius: 5px;
-      white-space: nowrap;
-      transition: all 0.2s;
-      font-size: 14px;
+      color: white;
+      padding: 8px 12px;
+      margin: 5px 0;
+      border-radius: 4px;
+      font-weight: bold;
     }
-    .floating-button .option-btns a:hover {
-      background-color: #555;
-    }
+    .whatsapp { background-color: #25D366; }
+    .telegram { background-color: #0088cc; }
+    .livechat { background-color: #00cfcf; }
 
-    /* ✅ 新增：横幅海报样式 */
-    .full-banner {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 2rem 0;
-    }
-
-    .full-banner img {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 10px;
-    }
   </style>
 </head>
 <body>
+
   <header>
     <div class="logo">
       <img src="logo.png" alt="Logo">
@@ -155,33 +132,32 @@
     <span></span>
   </div>
 
-  <!-- ✅ 新增：全横幅海报图 -->
-  <div class="full-banner">
-    <img src="https://i.imgur.com/qHVecWQ.gif" alt="全横幅海报" />
+  <!-- 海报轮播图 -->
+  <div class="carousel-container">
+    <div class="carousel-slide" id="carouselSlide">
+      <img src="https://i.imgur.com/qHVecWQ.gif" alt="Banner 1" />
+      <img src="https://i.imgur.com/Juv3NUQ.gif" alt="Banner 2" />
+      <img src="https://i.imgur.com/QbBLG0O.png" alt="Banner 3" />
+    </div>
+    <div class="dots">
+      <span class="dot active" onclick="goToSlide(0)"></span>
+      <span class="dot" onclick="goToSlide(1)"></span>
+      <span class="dot" onclick="goToSlide(2)"></span>
+    </div>
   </div>
 
-  <section class="features">
-    <h2>平台特色</h2>
-    <ul>
-      <li>🌐 多平台支持：手机 / 平板 / 电脑</li>
-      <li>💰 高返水 & 快速出款</li>
-      <li>🎲 真人 / 体育 / 老虎机</li>
-      <li>🛡️ 安全保障 & 隐私保护</li>
-      <li>🕹️ 24小时客服支持</li>
-    </ul>
-  </section>
-
-  <!-- 浮动客服按钮区域 -->
+  <!-- 浮动按钮 -->
   <div class="floating-button">
     <div class="option-btns" id="contactOptions">
-      <a href="https://t.me/Cs02easykaya" target="_blank">📲 Telegram</a>
-      <a href="https://wa.me/0142820304" target="_blank">📞 WhatsApp</a>
-      <a href="#" onclick="alert('Live Chat 模拟中...')">💬 Live Chat</a>
+      <a href="https://wa.me/60142820944" target="_blank" class="whatsapp">WhatsApp</a>
+      <a href="https://t.me/Cs02easykaya" target="_blank" class="telegram">Telegram</a>
+      <a href="#" onclick="alert('Live Chat 模拟中...')" class="livechat">Live Chat</a>
     </div>
-    <div class="main-btn" onclick="toggleContact()">🗨️</div>
+    <div class="main-btn" onclick="toggleContact()"></div>
   </div>
 
   <script>
+    // 跑马灯内容生成
     const marquee = document.querySelector('.marquee span');
     let messages = [];
     for (let i = 0; i < 50; i++) {
@@ -191,16 +167,39 @@
     }
     marquee.textContent = messages.join('');
 
+    // 浮动按钮切换
     function toggleContact() {
       const options = document.getElementById('contactOptions');
       options.style.display = options.style.display === 'flex' ? 'none' : 'flex';
     }
 
+    // WhatsApp跳转
     function goToRandomWhatsApp() {
       const numbers = ['60142820944', '60142820304', '60178986642'];
       const chosen = numbers[Math.floor(Math.random() * numbers.length)];
       window.open(`https://wa.me/${chosen}`, '_blank');
     }
+
+    // 轮播图逻辑
+    let currentSlide = 0;
+    const slides = document.getElementById('carouselSlide');
+    const dots = document.querySelectorAll('.dot');
+
+    function goToSlide(index) {
+      currentSlide = index;
+      updateCarousel();
+    }
+
+    function updateCarousel() {
+      slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[currentSlide].classList.add('active');
+    }
+
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % 3;
+      updateCarousel();
+    }, 3000);
   </script>
 </body>
 </html>

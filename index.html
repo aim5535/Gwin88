@@ -11,15 +11,35 @@
       background: #000;
       color: #fff;
     }
+    <head>
+  <style>
+    /* 之前的CSS代码 */
+
     header {
       background: #e50914;
-      max-width: 1000px;       /* 限制最大宽度 */
-      margin: 0 auto;          /* 水平居中 */
+      max-width: 1000px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
       padding: 10px 20px;
       position: relative;
     }
+
+    @media screen and (max-width: 600px) {
+      header {
+        max-width: 100%;
+        margin: 0;
+        padding: 10px 15px;
+      }
+      .signup-link {
+        margin-left: auto;
+      }
+    }
+
+    /* 其他CSS */
+  </style>
+</head>
+
     .logo img {
       height: 80px; /* 电脑版较大 */
     }

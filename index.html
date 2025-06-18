@@ -11,25 +11,23 @@
       background: #000;
       color: #fff;
     }
-
     header {
       background: #e50914;
       display: flex;
-      justify-content: center;
+      justify-content: center; /* logo居中 */
       align-items: center;
       padding: 10px 20px;
       position: relative;
     }
-
     .logo img {
-      height: 40px;
+      height: 80px; /* 电脑版较大 */
     }
-
     .signup-link {
       position: absolute;
-      right: calc(50% - 500px); /* 1000px layout width */
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
     }
-
     .signup-link a {
       background-color: #ffcc00;
       color: #111;
@@ -37,47 +35,54 @@
       border-radius: 4px;
       text-decoration: none;
       font-weight: bold;
+      font-size: 18px;
+      display: inline-block;
+      min-width: 120px;
+      text-align: center;
     }
 
+    /* 跑马灯 */
     .marquee {
       background: #111;
-      color: gold;
+      color: #ffd700; /* 纯金色 */
       overflow: hidden;
       white-space: nowrap;
+      font-weight: bold;
+      padding: 5px 0;
+      font-size: 20px;
     }
-
     .marquee span {
       display: inline-block;
       padding-left: 100%;
       animation: scroll 80s linear infinite;
     }
-
     @keyframes scroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-100%); }
     }
 
+    /* 轮播图 */
     .slider {
       position: relative;
       width: 1000px;
       height: 500px;
+      margin: 20px auto 40px auto;
       overflow: hidden;
-      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ffcc00;
+      background: #111;
     }
-
     .slides {
       display: flex;
-      width: 3000px;
+      width: 300%;
       height: 100%;
       transition: transform 0.5s ease-in-out;
     }
-
     .slides img {
       width: 1000px;
       height: 500px;
       object-fit: cover;
     }
-
     .nav-btn {
       position: absolute;
       top: 50%;
@@ -88,8 +93,9 @@
       padding: 5px 10px;
       cursor: pointer;
       z-index: 2;
+      user-select: none;
+      border-radius: 5px;
     }
-
     .prev { left: 10px; }
     .next { right: 10px; }
 
@@ -99,39 +105,99 @@
       width: 100%;
       text-align: center;
     }
-
     .dot {
       display: inline-block;
-      height: 10px;
-      width: 10px;
-      margin: 0 4px;
+      height: 12px;
+      width: 12px;
+      margin: 0 6px;
       background-color: #bbb;
       border-radius: 50%;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
-
     .active {
       background-color: #fff;
     }
 
+    /* 公司介绍 */
+    .description {
+      max-width: 1000px;
+      margin: 0 auto 40px auto;
+      text-align: center;
+      font-size: 26px;
+      line-height: 1.5;
+      padding: 0 15px;
+    }
+
+    /* 特点四个盒子 */
+    .features {
+      max-width: 1000px;
+      margin: 0 auto 60px auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 0 15px;
+    }
+    .feature-box {
+      flex: 1 1 220px;
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 5px #ffcc00;
+      color: #ffd700;
+      text-align: left;
+    }
+    .feature-box h3 {
+      margin-top: 0;
+      font-size: 22px;
+    }
+    .feature-box p {
+      font-size: 18px;
+      color: #fff;
+      margin-bottom: 0;
+    }
+
+    /* 按钮 */
+    .join-btn {
+      display: block;
+      width: 300px;
+      margin: 0 auto 40px auto;
+      background-color: #ffcc00;
+      color: #111;
+      text-align: center;
+      font-weight: bold;
+      font-size: 22px;
+      padding: 15px 0;
+      border-radius: 8px;
+      cursor: pointer;
+      user-select: none;
+      text-decoration: none;
+      box-shadow: 0 0 15px #ffcc00;
+      transition: background-color 0.3s ease;
+    }
+    .join-btn:hover {
+      background-color: #e6b800;
+    }
+
+    /* 浮动按钮 */
     .chat-button {
       position: fixed;
       bottom: 80px;
       right: 20px;
       z-index: 9999;
     }
-
     .chat-toggle {
       width: 60px;
       height: 60px;
       border-radius: 50%;
+      background: #e50914;
       background-image: url('https://i.imgur.com/boCqKhp.jpeg');
       background-size: cover;
       background-position: center;
       box-shadow: 0 0 10px rgba(0,0,0,0.4);
       cursor: pointer;
     }
-
     .chat-box {
       display: none;
       position: absolute;
@@ -143,12 +209,11 @@
       padding: 10px 15px;
       width: 250px;
       font-size: 14px;
+      box-shadow: 0 0 15px #ffcc00;
     }
-
     .chat-box p {
       margin: 5px 0;
     }
-
     .chat-box .btn {
       display: block;
       margin: 5px 0;
@@ -158,66 +223,54 @@
       text-decoration: none;
       color: white;
       font-weight: bold;
+      user-select: none;
     }
-
     .btn-wa { background: #25D366; }
     .btn-tg { background: #0088cc; }
     .btn-live { background: #00cfc5; }
 
-    .description {
-      max-width: 1000px;
-      margin: 30px auto;
-      text-align: center;
-      font-size: 18px;
-      line-height: 1.5;
-    }
-
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      max-width: 1000px;
-      margin: 30px auto;
-      gap: 20px;
-    }
-
-    .feature-box {
-      flex: 1 1 200px;
-      background: #111;
-      border: 1px solid #444;
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .feature-box h3 {
-      margin-top: 0;
-      color: #ffcc00;
-    }
-
-    .join-btn {
-      display: block;
-      margin: 40px auto 60px;
-      background: #ffcc00;
-      color: #000;
-      font-size: 18px;
-      font-weight: bold;
-      padding: 16px;
-      border-radius: 10px;
-      width: 300px;
-      text-align: center;
-      text-decoration: none;
-    }
-
-    /* 手机版字体样式放大 */
+    /* 手机端响应式 */
     @media screen and (max-width: 600px) {
+      .slider {
+        width: 100%;
+        height: auto;
+        margin: 20px auto 30px auto;
+      }
+
+      .slides img {
+        width: 100vw;
+        height: auto;
+      }
+
       .logo img {
         height: 60px;
       }
 
+      .signup-link {
+        right: 10px;
+      }
+      .signup-link a {
+        font-size: 16px;
+        padding: 6px 12px;
+        min-width: 100px;
+      }
+
       .description {
-        font-size: 22px;
-        padding: 20px;
+        font-size: 20px;
+        padding: 0 10px;
+      }
+
+      .features {
+        flex-direction: column;
+        gap: 15px;
+        max-width: 90vw;
+        margin-bottom: 40px;
+      }
+
+      .feature-box {
+        flex: 1 1 auto;
+        font-size: 18px;
+        padding: 15px;
       }
 
       .feature-box h3 {
@@ -225,7 +278,13 @@
       }
 
       .feature-box p {
-        font-size: 18px;
+        font-size: 16px;
+      }
+
+      .join-btn {
+        width: 90vw;
+        font-size: 20px;
+        padding: 15px 0;
       }
 
       .chat-toggle {
@@ -236,17 +295,12 @@
       .chat-box {
         font-size: 16px;
         width: 280px;
+        padding: 15px 20px;
       }
 
       .chat-box .btn {
         font-size: 16px;
-        padding: 12px;
-      }
-
-      .join-btn {
-        width: 320px;
-        font-size: 20px;
-        padding: 18px;
+        padding: 12px 0;
       }
     }
   </style>
@@ -256,7 +310,7 @@
   <!-- 顶部栏 -->
   <header>
     <div class="logo">
-      <img src="logo.png" alt="Logo">
+      <img src="logo.png" alt="Logo" />
     </div>
     <div class="signup-link">
       <a href="#" onclick="goToRandomWhatsApp()">SIGN UP</a>
@@ -268,12 +322,12 @@
     <span id="marqueeText"></span>
   </div>
 
-  <!-- 轮播图 -->
+  <!-- 海报轮播 -->
   <div class="slider">
     <div class="slides" id="slides">
-      <img src="https://imgur.com/LPgEU3I.jpg" alt="Banner 1">
-      <img src="https://imgur.com/5MKzeVa.jpg" alt="Banner 2">
-      <img src="https://imgur.com/MhFbzkz.jpg" alt="Banner 3">
+      <img src="https://i.imgur.com/LPgEU3I.jpg" alt="Banner 1" />
+      <img src="https://i.imgur.com/5MKzeVa.jpg" alt="Banner 2" />
+      <img src="https://i.imgur.com/MhFbzkz.jpg" alt="Banner 3" />
     </div>
     <div class="nav-btn prev" onclick="moveSlide(-1)">❮</div>
     <div class="nav-btn next" onclick="moveSlide(1)">❯</div>
@@ -286,10 +340,10 @@
 
   <!-- 公司介绍 -->
   <div class="description">
-    Welcome to GWIN88, your ultimate entertainment platform! Enjoy thrilling games, top-tier promotions, and exceptional customer service. Join us and experience the excitement!
+    GWIN88 是一家领先的娱乐游戏平台，致力于为玩家提供丰富多样的游戏体验和安全可靠的服务。
   </div>
 
-  <!-- 四个功能介绍 -->
+  <!-- 特点 -->
   <div class="features">
     <div class="feature-box">
       <h3>Huge Selection of Games</h3>
@@ -310,7 +364,7 @@
   </div>
 
   <!-- 加入按钮 -->
-  <a href="#" class="join-btn" onclick="goToRandomWhatsApp()">I WANT TO JOIN</a>
+  <a href="#" class="join-btn">I WANT TO JOIN</a>
 
   <!-- 浮动客服按钮 -->
   <div class="chat-button">
@@ -325,29 +379,35 @@
   </div>
 
   <script>
+    // 跑马灯生成
     const marquee = document.getElementById('marqueeText');
     let messages = [];
     for (let i = 0; i < 50; i++) {
       let suffix = Math.floor(1000 + Math.random() * 9000);
-      let amount = (100 + Math.random() * 900).toFixed(2);
+      let amount = (Math.random() * 900 + 100).toFixed(2);
       messages.push(`🎉+601******${suffix} Won RM${amount} | `);
     }
     marquee.textContent = messages.join('');
 
+    // WhatsApp 随机跳转
     function goToRandomWhatsApp() {
       const numbers = ['60142820944', '60142820304', '60178986642'];
       const chosen = numbers[Math.floor(Math.random() * numbers.length)];
       window.open(`https://wa.me/${chosen}`, '_blank');
     }
 
+    // 浮动按钮切换
     function toggleChat() {
       const box = document.getElementById('chatBox');
       box.style.display = box.style.display === 'block' ? 'none' : 'block';
+
+      // 随机 WhatsApp 链接
       const numbers = ['60142820944', '60142820304', '60178986642'];
       const chosen = numbers[Math.floor(Math.random() * numbers.length)];
       document.getElementById('waBtn').href = `https://wa.me/${chosen}`;
     }
 
+    // 轮播逻辑
     let current = 0;
     const slides = document.getElementById('slides');
     const dots = document.querySelectorAll('.dot');
@@ -368,9 +428,11 @@
       dots[current].classList.add('active');
     }
 
+    // 自动轮播
     setInterval(() => {
       moveSlide(1);
     }, 6000);
   </script>
+
 </body>
 </html>

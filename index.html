@@ -11,15 +11,26 @@
       background: #000;
       color: #fff;
     }
+
+    /* 顶部导航栏 */
     header {
       background: #e50914;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
+      position: relative;
     }
-    .logo img {
+    header .logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    header .logo img {
       height: 40px;
+    }
+    header .signup-link {
+      z-index: 1;
     }
     .signup-link a {
       background-color: #ffcc00;
@@ -28,6 +39,9 @@
       border-radius: 4px;
       text-decoration: none;
       font-weight: bold;
+    }
+    .spacer {
+      width: 60px;
     }
 
     /* 跑马灯 */
@@ -52,25 +66,19 @@
       position: relative;
       width: 1000px;
       height: 500px;
-      margin: 40px auto;
+      margin: 30px auto;
       overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      border-radius: 10px;
     }
     .slides {
       display: flex;
-      width: 3000px; /* 3 slides × 1000px */
+      width: 3000px;
       height: 100%;
       transition: transform 0.5s ease-in-out;
     }
-    .slide {
+    .slides img {
       width: 1000px;
-      height: 100%;
-      flex-shrink: 0;
-    }
-    .slide img {
-      width: 100%;
-      height: 100%;
+      height: 500px;
       object-fit: cover;
     }
     .nav-btn {
@@ -106,7 +114,7 @@
       background-color: #fff;
     }
 
-    /* 浮动按钮 */
+    /* 浮动客服按钮 */
     .chat-button {
       position: fixed;
       bottom: 80px;
@@ -151,16 +159,14 @@
     .btn-tg { background: #0088cc; }
     .btn-live { background: #00cfc5; }
 
-    @media (max-width: 1020px) {
+    @media (max-width: 1024px) {
       .slider {
         width: 100%;
         height: auto;
       }
-      .slide {
+      .slides img {
         width: 100%;
-      }
-      .slides {
-        width: 300%;
+        height: auto;
       }
     }
   </style>
@@ -169,6 +175,7 @@
 
   <!-- 顶部栏 -->
   <header>
+    <div class="spacer"></div>
     <div class="logo">
       <img src="logo.png" alt="Logo">
     </div>
@@ -182,12 +189,12 @@
     <span id="marqueeText"></span>
   </div>
 
-  <!-- 轮播图 -->
+  <!-- 海报轮播 -->
   <div class="slider">
     <div class="slides" id="slides">
-      <div class="slide"><img src="https://imgur.com/LPgEU3I.png" alt="Banner 1"></div>
-      <div class="slide"><img src="https://imgur.com/5MKzeVa.png" alt="Banner 2"></div>
-      <div class="slide"><img src="https://imgur.com/MhFbzkz.png" alt="Banner 3"></div>
+      <img src="https://imgur.com/LPgEU3I.png" alt="海报 1">
+      <img src="https://imgur.com/5MKzeVa.png" alt="海报 2">
+      <img src="https://imgur.com/MhFbzkz.png" alt="海报 3">
     </div>
     <div class="nav-btn prev" onclick="moveSlide(-1)">❮</div>
     <div class="nav-btn next" onclick="moveSlide(1)">❯</div>
@@ -210,8 +217,9 @@
     </div>
   </div>
 
+  <!-- 脚本 -->
   <script>
-    // 跑马灯内容生成
+    // 跑马灯消息生成
     const marquee = document.getElementById('marqueeText');
     let messages = [];
     for (let i = 0; i < 50; i++) {
@@ -221,23 +229,24 @@
     }
     marquee.textContent = messages.join('');
 
-    // 随机 WhatsApp 跳转
+    // WhatsApp 随机跳转
     function goToRandomWhatsApp() {
       const numbers = ['60142820944', '60142820304', '60178986642'];
       const chosen = numbers[Math.floor(Math.random() * numbers.length)];
       window.open(`https://wa.me/${chosen}`, '_blank');
     }
 
-    // 浮动客服按钮
+    // 浮动按钮切换
     function toggleChat() {
       const box = document.getElementById('chatBox');
       box.style.display = box.style.display === 'block' ? 'none' : 'block';
+
       const numbers = ['60142820944', '60142820304', '60178986642'];
       const chosen = numbers[Math.floor(Math.random() * numbers.length)];
       document.getElementById('waBtn').href = `https://wa.me/${chosen}`;
     }
 
-    // 轮播逻辑
+    // 轮播图控制
     let current = 0;
     const slides = document.getElementById('slides');
     const dots = document.querySelectorAll('.dot');
@@ -263,5 +272,6 @@
       moveSlide(1);
     }, 6000);
   </script>
+
 </body>
 </html>

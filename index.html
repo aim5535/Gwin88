@@ -231,20 +231,17 @@
 
     /* 手机端响应式 */
     @media screen and (max-width: 600px) {
-  .slider {
-    width: 100%;
-    height: auto;
-    margin: 20px auto 30px auto;
-  }
-  .slides {
-    width: 100%; /* 一页一张 */
-    flex-wrap: nowrap;
-  }
-  .slides img {
-    width: 100%; /* 图片宽度铺满容器 */
-    height: auto;
-  }
-}
+      .slider {
+        width: 100%;
+        height: auto;
+        margin: 20px auto 30px auto;
+      }
+
+      .slides img {
+        width: 100vw;
+        height: auto;
+      }
+
       .logo img {
         height: 60px;
       }

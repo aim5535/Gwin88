@@ -14,9 +14,28 @@
     }
     header {
       background: #e50914;
-      padding: 1.2rem;
-      font-size: 1.8rem;
+      padding: 0.8rem 1rem;
+      font-size: 1.2rem;
       font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 40px;
+    }
+    .signup-link a {
+      background-color: #ffcc00;
+      color: #111;
+      padding: 8px 14px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9rem;
     }
     .marquee {
       background: #222;
@@ -32,6 +51,8 @@
     }
     @keyframes scroll {
       0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
       100% { transform: translateX(-100%); }
     }
     .features, .contact {
@@ -105,12 +126,17 @@
   </style>
 </head>
 <body>
-  <header>欢迎来到 GWIN88 娱乐平台</header>
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="Logo">
+    </div>
+    <div class="signup-link">
+      <a href="#" onclick="goToRandomWhatsApp()">SIGN UP</a>
+    </div>
+  </header>
 
   <div class="marquee">
-    <span>
-      <!-- Winning messages will be generated here -->
-    </span>
+    <span></span>
   </div>
 
   <section class="features">
@@ -147,7 +173,7 @@
     const marquee = document.querySelector('.marquee span');
     let messages = [];
     for (let i = 0; i < 50; i++) {
-      let suffix = Math.floor(Math.random() * 9000 + 1000); // 随机四位数
+      let suffix = Math.floor(Math.random() * 9000 + 1000);
       let amount = 'RM' + Math.floor(Math.random() * 900 + 100);
       messages.push(`🎉+601******${suffix} Won ${amount} | `);
     }
@@ -156,6 +182,12 @@
     function toggleContact() {
       const options = document.getElementById('contactOptions');
       options.style.display = options.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function goToRandomWhatsApp() {
+      const numbers = ['0142820304', '0123456789', '0111122233'];
+      const chosen = numbers[Math.floor(Math.random() * numbers.length)];
+      window.open(`https://wa.me/${chosen}`, '_blank');
     }
   </script>
 </body>

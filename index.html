@@ -1,45 +1,44 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>GWIN88 | 娱乐平台</title>
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #111;
+      background: #000;
       color: #fff;
+      font-family: Arial, sans-serif;
     }
 
     header {
-      background: #000;
-      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 10px 20px;
+      background: #111;
     }
 
-    .logo img {
+    header img {
       height: 40px;
     }
 
-    .signup-link a {
-      background-color: #ffcc00;
-      color: #111;
+    .signup-btn a {
+      background: #ffcc00;
+      color: #000;
       padding: 8px 14px;
-      border-radius: 4px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 0.9rem;
+      border-radius: 4px;
     }
 
     .marquee {
-      background: #222;
+      background: #000;
       color: #0f0;
-      padding: 10px;
       overflow: hidden;
       white-space: nowrap;
+      padding: 10px 0;
     }
 
     .marquee span {
@@ -55,8 +54,7 @@
 
     .carousel {
       position: relative;
-      max-width: 100%;
-      margin: 0 auto;
+      width: 100%;
       height: 50vh;
       overflow: hidden;
     }
@@ -72,135 +70,151 @@
       display: block;
     }
 
-    .floating-chat {
+    /* 浮动按钮 */
+    .floating-widget {
       position: fixed;
       bottom: 100px;
       right: 20px;
-      z-index: 999;
-      font-family: Arial, sans-serif;
-    }
-
-    .chat-box {
-      background: #1e1e1e;
-      padding: 15px;
+      z-index: 9999;
+      width: 280px;
+      background: #fff;
+      color: #000;
       border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      width: 220px;
-      display: none;
-    }
-
-    .chat-box h4 {
-      margin: 0 0 10px;
-      font-size: 16px;
-    }
-
-    .chat-box p {
-      margin: 0 0 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      overflow: hidden;
       font-size: 14px;
+      display: none;
+      flex-direction: column;
     }
 
-    .chat-box a {
-      display: block;
+    .floating-header {
+      display: flex;
+      align-items: center;
       padding: 10px;
-      margin: 6px 0;
+      background: #222;
+    }
+
+    .floating-header img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    .floating-header div {
+      font-size: 14px;
       color: #fff;
-      text-align: center;
-      border-radius: 5px;
+    }
+
+    .floating-buttons {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      gap: 10px;
+    }
+
+    .floating-buttons a {
       text-decoration: none;
+      padding: 10px;
+      border-radius: 5px;
+      color: white;
+      text-align: center;
       font-weight: bold;
     }
 
-    .chat-box a.whatsapp { background: #25D366; }
-    .chat-box a.telegram { background: #0088cc; }
-    .chat-box a.livechat { background: #00c0c0; }
+    .btn-wa { background: #25D366; }
+    .btn-tg { background: #0088cc; }
+    .btn-live { background: #00c2c2; }
 
-    .chat-toggle {
+    .toggle-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 10000;
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      overflow: hidden;
-      border: 2px solid #fff;
+      background: url('https://i.imgur.com/boCqKhp.jpeg') no-repeat center/cover;
+      border: 3px solid #fff;
       cursor: pointer;
     }
 
-    .chat-toggle img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
     @media (max-width: 600px) {
-      .chat-box {
-        width: 200px;
+      .carousel img {
+        object-fit: contain;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- 顶部导航 -->
   <header>
-    <div class="logo">
-      <img src="logo.png" alt="公司Logo">
-    </div>
-    <div class="signup-link">
-      <a href="#" onclick="goToRandomWhatsApp()">SIGN UP</a>
-    </div>
+    <div><img src="logo.png" alt="Logo"></div>
+    <div class="signup-btn"><a href="#" onclick="goToRandomWhatsApp()">SIGN UP</a></div>
   </header>
 
-  <div class="marquee"><span></span></div>
+  <!-- 跑马灯 -->
+  <div class="marquee">
+    <span id="marqueeText"></span>
+  </div>
 
+  <!-- 海报轮播 -->
   <div class="carousel">
     <img src="https://i.imgur.com/qHVecWQ.gif" class="active" />
     <img src="https://i.imgur.com/Juv3NUQ.gif" />
     <img src="https://i.imgur.com/QbBLG0O.png" />
   </div>
 
-  <div class="floating-chat">
-    <div class="chat-box" id="chatBox">
-      <h4>Hi: 想了解今日优惠吗?</h4>
-      <p>点击以下方式与我们联系：</p>
-      <a class="whatsapp" href="#" onclick="goToRandomWhatsApp()">📞 WhatsApp</a>
-      <a class="telegram" href="https://t.me/Cs02easykaya" target="_blank">📡 Telegram</a>
-      <a class="livechat" href="#" onclick="alert('Live Chat 模拟中...')">💬 Live Chat</a>
+  <!-- 浮动客服按钮 -->
+  <div class="toggle-button" onclick="toggleWidget()"></div>
+  <div class="floating-widget" id="floatingWidget">
+    <div class="floating-header">
+      <img src="https://i.imgur.com/boCqKhp.jpeg" />
+      <div>
+        Hi: 想了解今日优惠吗？<br>
+        点击以下方式与我们联系：
+      </div>
     </div>
-    <div class="chat-toggle" onclick="toggleChat()">
-      <img src="https://i.imgur.com/boCqKhp.jpeg" alt="客服头像" />
+    <div class="floating-buttons">
+      <a class="btn-wa" href="#" onclick="goToRandomWhatsApp()">WhatsApp</a>
+      <a class="btn-tg" href="https://t.me/Cs02easykaya" target="_blank">Telegram</a>
+      <a class="btn-live" href="#" onclick="alert('Live Chat 模拟中...')">Live Chat</a>
     </div>
   </div>
 
   <script>
-    // 生成跑马灯内容
-    const marquee = document.querySelector('.marquee span');
-    let messages = [];
+    // 跑马灯内容生成
+    const marquee = document.getElementById('marqueeText');
+    const messages = [];
     for (let i = 0; i < 50; i++) {
-      let suffix = Math.floor(Math.random() * 9000 + 1000);
-      let amount = 'RM' + Math.floor(Math.random() * 900 + 100);
-      messages.push(`🎉+601******${suffix} Won ${amount} | `);
+      const suffix = Math.floor(Math.random() * 9000 + 1000);
+      const amount = Math.floor(Math.random() * 900 + 100);
+      messages.push(`🎉+601******${suffix} Won RM${amount} | `);
     }
     marquee.textContent = messages.join('');
 
-    // 随机 WhatsApp 跳转
+    // 海报轮播逻辑
+    const images = document.querySelectorAll('.carousel img');
+    let currentIndex = 0;
+    setInterval(() => {
+      images[currentIndex].classList.remove('active');
+      currentIndex = (currentIndex + 1) % images.length;
+      images[currentIndex].classList.add('active');
+    }, 5000);
+
+    // 浮动按钮逻辑
+    function toggleWidget() {
+      const widget = document.getElementById('floatingWidget');
+      widget.style.display = widget.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    // WhatsApp 随机跳转
     function goToRandomWhatsApp() {
       const numbers = ['60142820944', '60142820304', '60178986642'];
       const chosen = numbers[Math.floor(Math.random() * numbers.length)];
       window.open(`https://wa.me/${chosen}`, '_blank');
     }
-
-    // 切换客服浮窗
-    function toggleChat() {
-      const box = document.getElementById('chatBox');
-      box.style.display = box.style.display === 'block' ? 'none' : 'block';
-    }
-
-    // 轮播图自动切换
-    let current = 0;
-    const images = document.querySelectorAll('.carousel img');
-    setInterval(() => {
-      images[current].classList.remove('active');
-      current = (current + 1) % images.length;
-      images[current].classList.add('active');
-    }, 4000); // 每 4 秒切换
   </script>
-
 </body>
 </html>

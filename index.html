@@ -30,6 +30,7 @@
       font-weight: bold;
     }
 
+    /* 跑马灯 */
     .marquee {
       background: #111;
       color: #0f0;
@@ -46,23 +47,24 @@
       100% { transform: translateX(-100%); }
     }
 
+    /* 轮播图 */
     .slider {
       position: relative;
-      width: 100%;
-      height: 50vh;
+      width: 1000px;
+      height: 500px;
+      margin: 40px auto;
       overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
     }
     .slides {
       display: flex;
-      width: 300%;
+      width: 3000px; /* 3 slides × 1000px */
       height: 100%;
       transition: transform 0.5s ease-in-out;
     }
     .slide {
-      width: 100%;
+      width: 1000px;
       height: 100%;
       flex-shrink: 0;
     }
@@ -71,7 +73,6 @@
       height: 100%;
       object-fit: cover;
     }
-
     .nav-btn {
       position: absolute;
       top: 50%;
@@ -105,6 +106,7 @@
       background-color: #fff;
     }
 
+    /* 浮动按钮 */
     .chat-button {
       position: fixed;
       bottom: 80px;
@@ -115,7 +117,6 @@
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      background: #e50914;
       background-image: url('https://i.imgur.com/boCqKhp.jpeg');
       background-size: cover;
       background-position: center;
@@ -150,15 +151,23 @@
     .btn-tg { background: #0088cc; }
     .btn-live { background: #00cfc5; }
 
-    @media (max-width: 768px) {
-      .slide img {
-        object-fit: contain;
+    @media (max-width: 1020px) {
+      .slider {
+        width: 100%;
+        height: auto;
+      }
+      .slide {
+        width: 100%;
+      }
+      .slides {
+        width: 300%;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- 顶部栏 -->
   <header>
     <div class="logo">
       <img src="logo.png" alt="Logo">
@@ -168,11 +177,12 @@
     </div>
   </header>
 
+  <!-- 跑马灯 -->
   <div class="marquee">
     <span id="marqueeText"></span>
   </div>
 
-  <!-- 海报轮播 -->
+  <!-- 轮播图 -->
   <div class="slider">
     <div class="slides" id="slides">
       <div class="slide"><img src="https://imgur.com/LPgEU3I.png" alt="Banner 1"></div>
@@ -188,6 +198,7 @@
     </div>
   </div>
 
+  <!-- 浮动客服按钮 -->
   <div class="chat-button">
     <div class="chat-toggle" onclick="toggleChat()"></div>
     <div class="chat-box" id="chatBox">
@@ -200,7 +211,7 @@
   </div>
 
   <script>
-    // 跑马灯
+    // 跑马灯内容生成
     const marquee = document.getElementById('marqueeText');
     let messages = [];
     for (let i = 0; i < 50; i++) {
@@ -210,14 +221,14 @@
     }
     marquee.textContent = messages.join('');
 
-    // WhatsApp 跳转
+    // 随机 WhatsApp 跳转
     function goToRandomWhatsApp() {
       const numbers = ['60142820944', '60142820304', '60178986642'];
       const chosen = numbers[Math.floor(Math.random() * numbers.length)];
       window.open(`https://wa.me/${chosen}`, '_blank');
     }
 
-    // 浮动聊天按钮
+    // 浮动客服按钮
     function toggleChat() {
       const box = document.getElementById('chatBox');
       box.style.display = box.style.display === 'block' ? 'none' : 'block';
@@ -226,7 +237,7 @@
       document.getElementById('waBtn').href = `https://wa.me/${chosen}`;
     }
 
-    // 轮播控制
+    // 轮播逻辑
     let current = 0;
     const slides = document.getElementById('slides');
     const dots = document.querySelectorAll('.dot');
@@ -242,11 +253,12 @@
     }
 
     function updateSlide() {
-      slides.style.transform = `translateX(-${current * 100}%)`;
+      slides.style.transform = `translateX(-${current * 1000}px)`;
       dots.forEach(dot => dot.classList.remove('active'));
       dots[current].classList.add('active');
     }
 
+    // 自动轮播
     setInterval(() => {
       moveSlide(1);
     }, 6000);

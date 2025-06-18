@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GWIN88 | 娱乐平台</title>
   <style>
     body {
@@ -19,6 +19,10 @@
       font-weight: bold;
       display: flex;
       justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      display: flex;
       align-items: center;
     }
     .logo img {
@@ -49,76 +53,91 @@
       0% { transform: translateX(0); }
       100% { transform: translateX(-100%); }
     }
-    .carousel-wrapper {
-      display: flex;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      margin-top: 10px;
+
+    .features, .contact {
+      padding: 2rem 1rem;
     }
-    .carousel-slide img {
-      width: 100%;
-      max-width: 500px;
-      margin: 0 auto;
-      border-radius: 10px;
+    .features h2, .contact h2 {
+      color: #ffcc00;
+      margin-bottom: 1rem;
+    }
+    .features ul {
+      list-style: none;
+      padding: 0;
+      font-size: 1.1rem;
+    }
+    .features ul li {
+      margin: 0.6rem 0;
+    }
+    .buttons a {
+      display: inline-block;
+      margin: 1rem;
+      padding: 1rem 2rem;
+      background: #e50914;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .buttons a:hover {
+      background: #b00610;
     }
 
-    /* Floating Contact Panel */
-    .floating-contact {
+    /* 浮动按钮样式 */
+    .floating-button {
       position: fixed;
       bottom: 20px;
       right: 20px;
       z-index: 9999;
     }
-    .contact-card {
-      display: none;
-      background: #1c1c1c;
-      border-radius: 10px;
-      padding: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-      text-align: left;
-      width: 230px;
-    }
-    .contact-card img {
+    .floating-button .main-btn {
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      display: block;
-      margin: -40px auto 10px auto;
-    }
-    .contact-card h3 {
-      font-size: 16px;
-      margin: 5px 0;
-      color: #fff;
-    }
-    .contact-card p {
-      font-size: 14px;
-      margin-bottom: 10px;
-      color: #ccc;
-    }
-    .contact-card a {
-      display: block;
-      text-align: center;
-      padding: 10px;
-      margin: 5px 0;
-      border-radius: 5px;
+      background-color: #e50914;
       color: white;
-      font-weight: bold;
-      text-decoration: none;
-    }
-    .whatsapp { background: #25D366; }
-    .telegram { background: #0088cc; }
-    .livechat { background: #00bcd4; }
-
-    .contact-toggle {
-      background: #e50914;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      color: white;
-      font-size: 28px;
+      font-size: 30px;
       text-align: center;
       line-height: 60px;
       cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .floating-button .option-btns {
+      display: none;
+      flex-direction: column;
+      margin-bottom: 10px;
+      align-items: flex-end;
+    }
+    .floating-button .option-btns a {
+      background-color: #333;
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      margin: 4px 0;
+      border-radius: 5px;
+      white-space: nowrap;
+      transition: all 0.2s;
+      font-size: 14px;
+    }
+    .floating-button .option-btns a:hover {
+      background-color: #555;
+    }
+
+    /* ✅ 新增：横幅海报样式 */
+    .full-banner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 2rem 0;
+    }
+
+    .full-banner img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
     }
   </style>
 </head>
@@ -132,33 +151,37 @@
     </div>
   </header>
 
-  <!-- 🎉 Marquee -->
   <div class="marquee">
     <span></span>
   </div>
 
-  <!-- 🎴 Carousel Banners -->
-  <div class="carousel-wrapper">
-    <div class="carousel-slide"><img src="https://i.imgur.com/qHVecWQ.gif" alt="Banner1"></div>
-    <div class="carousel-slide"><img src="https://i.imgur.com/Juv3NUQ.gif" alt="Banner2"></div>
-    <div class="carousel-slide"><img src="https://i.imgur.com/QbBLG0O.png" alt="Banner3"></div>
+  <!-- ✅ 新增：全横幅海报图 -->
+  <div class="full-banner">
+    <img src="https://i.imgur.com/qHVecWQ.gif" alt="全横幅海报" />
   </div>
 
-  <!-- 💬 Floating Contact -->
-  <div class="floating-contact">
-    <div class="contact-card" id="contactCard">
-      <img src="https://i.imgur.com/boCqKhp.jpeg" alt="客服">
-      <h3>Hi: 想了解今日优惠吗?</h3>
-      <p>点击以下方式与我们联系：</p>
-      <a href="https://wa.me/60142820944" target="_blank" class="whatsapp">📞 WhatsApp</a>
-      <a href="https://t.me/Cs02easykaya" target="_blank" class="telegram">📡 Telegram</a>
-      <a href="#" onclick="alert('Live Chat 模拟中...')" class="livechat">💬 Live Chat</a>
+  <section class="features">
+    <h2>平台特色</h2>
+    <ul>
+      <li>🌐 多平台支持：手机 / 平板 / 电脑</li>
+      <li>💰 高返水 & 快速出款</li>
+      <li>🎲 真人 / 体育 / 老虎机</li>
+      <li>🛡️ 安全保障 & 隐私保护</li>
+      <li>🕹️ 24小时客服支持</li>
+    </ul>
+  </section>
+
+  <!-- 浮动客服按钮区域 -->
+  <div class="floating-button">
+    <div class="option-btns" id="contactOptions">
+      <a href="https://t.me/Cs02easykaya" target="_blank">📲 Telegram</a>
+      <a href="https://wa.me/0142820304" target="_blank">📞 WhatsApp</a>
+      <a href="#" onclick="alert('Live Chat 模拟中...')">💬 Live Chat</a>
     </div>
-    <div class="contact-toggle" onclick="toggleContact()">🗨️</div>
+    <div class="main-btn" onclick="toggleContact()">🗨️</div>
   </div>
 
   <script>
-    // 🎉 马灯内容
     const marquee = document.querySelector('.marquee span');
     let messages = [];
     for (let i = 0; i < 50; i++) {
@@ -168,17 +191,15 @@
     }
     marquee.textContent = messages.join('');
 
-    // WhatsApp 随机跳转
+    function toggleContact() {
+      const options = document.getElementById('contactOptions');
+      options.style.display = options.style.display === 'flex' ? 'none' : 'flex';
+    }
+
     function goToRandomWhatsApp() {
       const numbers = ['60142820944', '60142820304', '60178986642'];
       const chosen = numbers[Math.floor(Math.random() * numbers.length)];
       window.open(`https://wa.me/${chosen}`, '_blank');
-    }
-
-    // 浮动卡片切换
-    function toggleContact() {
-      const card = document.getElementById('contactCard');
-      card.style.display = card.style.display === 'block' ? 'none' : 'block';
     }
   </script>
 </body>

@@ -49,65 +49,77 @@
       0% { transform: translateX(0); }
       100% { transform: translateX(-100%); }
     }
-    .features {
-      padding: 2rem 1rem;
+    .carousel-wrapper {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      margin-top: 10px;
     }
-    .features h2 {
-      color: #ffcc00;
-      margin-bottom: 1rem;
-    }
-    .features ul {
-      list-style: none;
-      padding: 0;
-      font-size: 1.1rem;
-    }
-    .features ul li {
-      margin: 0.6rem 0;
+    .carousel-slide img {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      border-radius: 10px;
     }
 
-    /* 右下角客服按钮样式 */
-    .chat-widget {
+    /* Floating Contact Panel */
+    .floating-contact {
       position: fixed;
       bottom: 20px;
       right: 20px;
       z-index: 9999;
-      text-align: left;
     }
-    .chat-header img {
+    .contact-card {
+      display: none;
+      background: #1c1c1c;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      text-align: left;
+      width: 230px;
+    }
+    .contact-card img {
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      cursor: pointer;
-      border: 2px solid #fff;
-      box-shadow: 0 0 8px rgba(255,255,255,0.2);
-    }
-    .chat-box {
-      display: none;
-      margin-top: 10px;
-      padding: 15px;
-      background-color: #1c1c1e;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.6);
-      color: #fff;
-      width: 220px;
-    }
-    .chat-box p {
-      margin: 5px 0;
-    }
-    .chat-box a {
       display: block;
-      margin: 8px 0;
-      padding: 10px 14px;
-      text-decoration: none;
-      color: white;
-      border-radius: 6px;
-      font-weight: bold;
-      text-align: center;
-      font-size: 14px;
+      margin: -40px auto 10px auto;
     }
-    .wa-btn { background-color: #25D366; }
-    .tg-btn { background-color: #0088cc; }
-    .live-btn { background-color: #00cfc8; }
+    .contact-card h3 {
+      font-size: 16px;
+      margin: 5px 0;
+      color: #fff;
+    }
+    .contact-card p {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: #ccc;
+    }
+    .contact-card a {
+      display: block;
+      text-align: center;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .whatsapp { background: #25D366; }
+    .telegram { background: #0088cc; }
+    .livechat { background: #00bcd4; }
+
+    .contact-toggle {
+      background: #e50914;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      color: white;
+      font-size: 28px;
+      text-align: center;
+      line-height: 60px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -120,37 +132,33 @@
     </div>
   </header>
 
+  <!-- 🎉 Marquee -->
   <div class="marquee">
     <span></span>
   </div>
 
-  <section class="features">
-    <h2>平台特色</h2>
-    <ul>
-      <li>🌐 多平台支持：手机 / 平板 / 电脑</li>
-      <li>💰 高返水 & 快速出款</li>
-      <li>🎲 真人 / 体育 / 老虎机</li>
-      <li>🛡️ 安全保障 & 隐私保护</li>
-      <li>🕹️ 24小时客服支持</li>
-    </ul>
-  </section>
+  <!-- 🎴 Carousel Banners -->
+  <div class="carousel-wrapper">
+    <div class="carousel-slide"><img src="https://i.imgur.com/qHVecWQ.gif" alt="Banner1"></div>
+    <div class="carousel-slide"><img src="https://i.imgur.com/Juv3NUQ.gif" alt="Banner2"></div>
+    <div class="carousel-slide"><img src="https://i.imgur.com/QbBLG0O.png" alt="Banner3"></div>
+  </div>
 
-  <!-- 客服浮动按钮 -->
-  <div class="chat-widget" id="chatWidget">
-    <div class="chat-header" onclick="toggleChatBox()">
-      <img src="https://i.imgur.com/boCqKhp.jpeg" alt="avatar" />
-    </div>
-    <div class="chat-box" id="chatBox">
-      <p><strong>Hi: 想了解今日优惠吗?</strong></p>
+  <!-- 💬 Floating Contact -->
+  <div class="floating-contact">
+    <div class="contact-card" id="contactCard">
+      <img src="https://i.imgur.com/boCqKhp.jpeg" alt="客服">
+      <h3>Hi: 想了解今日优惠吗?</h3>
       <p>点击以下方式与我们联系：</p>
-      <a href="https://wa.me/60142820944" target="_blank" class="wa-btn">📞 WhatsApp</a>
-      <a href="https://t.me/Cs02easykaya" target="_blank" class="tg-btn">✈️ Telegram</a>
-      <a href="#" onclick="alert('Live Chat 模拟中...')" class="live-btn">💬 Live Chat</a>
+      <a href="https://wa.me/60142820944" target="_blank" class="whatsapp">📞 WhatsApp</a>
+      <a href="https://t.me/Cs02easykaya" target="_blank" class="telegram">📡 Telegram</a>
+      <a href="#" onclick="alert('Live Chat 模拟中...')" class="livechat">💬 Live Chat</a>
     </div>
+    <div class="contact-toggle" onclick="toggleContact()">🗨️</div>
   </div>
 
   <script>
-    // 跑马灯
+    // 🎉 马灯内容
     const marquee = document.querySelector('.marquee span');
     let messages = [];
     for (let i = 0; i < 50; i++) {
@@ -160,17 +168,17 @@
     }
     marquee.textContent = messages.join('');
 
-    // signup WhatsApp 随机跳转
+    // WhatsApp 随机跳转
     function goToRandomWhatsApp() {
       const numbers = ['60142820944', '60142820304', '60178986642'];
       const chosen = numbers[Math.floor(Math.random() * numbers.length)];
       window.open(`https://wa.me/${chosen}`, '_blank');
     }
 
-    // 客服浮动框显示切换
-    function toggleChatBox() {
-      const box = document.getElementById("chatBox");
-      box.style.display = box.style.display === "block" ? "none" : "block";
+    // 浮动卡片切换
+    function toggleContact() {
+      const card = document.getElementById('contactCard');
+      card.style.display = card.style.display === 'block' ? 'none' : 'block';
     }
   </script>
 </body>

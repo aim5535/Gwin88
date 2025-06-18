@@ -1,31 +1,22 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-Hans">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GWIN88 | 娱乐平台</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #111;
+      background: #111;
       color: #fff;
-      text-align: center;
     }
 
-    /* 顶部导航栏 */
     header {
-      background: #e50914;
-      padding: 0.8rem 1rem;
-      font-size: 1.2rem;
-      font-weight: bold;
+      background: #000;
+      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      display: flex;
       align-items: center;
     }
 
@@ -43,11 +34,10 @@
       font-size: 0.9rem;
     }
 
-    /* 跑马灯 */
     .marquee {
       background: #222;
       color: #0f0;
-      padding: 0.5rem 0;
+      padding: 10px;
       overflow: hidden;
       white-space: nowrap;
     }
@@ -63,98 +53,84 @@
       100% { transform: translateX(-100%); }
     }
 
-    /* 海报轮播 */
-    .banner-carousel {
+    .carousel {
+      position: relative;
       max-width: 100%;
+      margin: 0 auto;
       height: 50vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       overflow: hidden;
-      margin: 20px auto;
     }
 
-    .banner-carousel img {
-      width: auto;
+    .carousel img {
+      width: 100%;
       height: 100%;
-      max-width: 100%;
+      object-fit: cover;
       display: none;
-      object-fit: contain;
     }
 
-    .banner-carousel img.active {
+    .carousel img.active {
       display: block;
     }
 
-    /* 客服按钮样式 */
-    .floating-support {
+    .floating-chat {
       position: fixed;
-      bottom: 120px;
+      bottom: 100px;
       right: 20px;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
+      z-index: 999;
+      font-family: Arial, sans-serif;
     }
 
-    .floating-support .avatar {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      border: 2px solid #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
-    }
-
-    .support-box {
-      display: none;
-      margin-top: 10px;
-      background-color: #1c1c1c;
-      border-radius: 10px;
+    .chat-box {
+      background: #1e1e1e;
       padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
       width: 220px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-      color: white;
+      display: none;
+    }
+
+    .chat-box h4 {
+      margin: 0 0 10px;
+      font-size: 16px;
+    }
+
+    .chat-box p {
+      margin: 0 0 10px;
       font-size: 14px;
     }
 
-    .support-box .greet {
-      font-weight: bold;
-      margin-bottom: 5px;
-      font-size: 15px;
-    }
-
-    .support-box .desc {
-      margin-bottom: 12px;
-      font-size: 13px;
-    }
-
-    .support-box .btn {
+    .chat-box a {
       display: block;
-      padding: 8px;
-      margin-bottom: 8px;
-      border-radius: 6px;
+      padding: 10px;
+      margin: 6px 0;
+      color: #fff;
       text-align: center;
+      border-radius: 5px;
       text-decoration: none;
       font-weight: bold;
-      color: #fff;
     }
 
-    .support-box .btn.whatsapp { background: #25D366; }
-    .support-box .btn.telegram { background: #0088cc; }
-    .support-box .btn.livechat { background: #ffaa00; }
+    .chat-box a.whatsapp { background: #25D366; }
+    .chat-box a.telegram { background: #0088cc; }
+    .chat-box a.livechat { background: #00c0c0; }
 
-    .support-box .btn:hover {
-      opacity: 0.9;
+    .chat-toggle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid #fff;
+      cursor: pointer;
     }
 
-    /* 响应式 */
-    @media (max-width: 768px) {
-      .banner-carousel {
-        height: 30vh;
-      }
+    .chat-toggle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-      .support-box {
+    @media (max-width: 600px) {
+      .chat-box {
         width: 200px;
       }
     }
@@ -162,44 +138,39 @@
 </head>
 <body>
 
-  <!-- ✅ 顶部导航栏 -->
   <header>
     <div class="logo">
-      <img src="logo.png" alt="Logo">
+      <img src="logo.png" alt="公司Logo">
     </div>
     <div class="signup-link">
       <a href="#" onclick="goToRandomWhatsApp()">SIGN UP</a>
     </div>
   </header>
 
-  <!-- ✅ 跑马灯 -->
-  <div class="marquee">
-    <span id="marqueeText"></span>
-  </div>
+  <div class="marquee"><span></span></div>
 
-  <!-- ✅ 中间轮播海报 -->
-  <div class="banner-carousel">
+  <div class="carousel">
     <img src="https://i.imgur.com/qHVecWQ.gif" class="active" />
     <img src="https://i.imgur.com/Juv3NUQ.gif" />
     <img src="https://i.imgur.com/QbBLG0O.png" />
   </div>
 
-  <!-- ✅ 浮动客服按钮 -->
-  <div class="floating-support" onclick="toggleSupport()">
-    <img src="https://i.imgur.com/boCqKhp.jpeg" class="avatar" />
-    <div class="support-box" id="supportBox">
-      <div class="greet">Hi: 想了解今日优惠吗?</div>
-      <div class="desc">点击以下方式与我们联系：</div>
-      <a class="btn whatsapp" href="https://wa.me/60142820944" target="_blank">📞 WhatsApp</a>
-      <a class="btn telegram" href="https://t.me/Cs02easykaya" target="_blank">✈️ Telegram</a>
-      <a class="btn livechat" href="#" onclick="alert('Live Chat 模拟中...')">💬 Live Chat</a>
+  <div class="floating-chat">
+    <div class="chat-box" id="chatBox">
+      <h4>Hi: 想了解今日优惠吗?</h4>
+      <p>点击以下方式与我们联系：</p>
+      <a class="whatsapp" href="#" onclick="goToRandomWhatsApp()">📞 WhatsApp</a>
+      <a class="telegram" href="https://t.me/Cs02easykaya" target="_blank">📡 Telegram</a>
+      <a class="livechat" href="#" onclick="alert('Live Chat 模拟中...')">💬 Live Chat</a>
+    </div>
+    <div class="chat-toggle" onclick="toggleChat()">
+      <img src="https://i.imgur.com/boCqKhp.jpeg" alt="客服头像" />
     </div>
   </div>
 
-  <!-- ✅ 脚本逻辑 -->
   <script>
-    // 跑马灯内容
-    const marquee = document.getElementById('marqueeText');
+    // 生成跑马灯内容
+    const marquee = document.querySelector('.marquee span');
     let messages = [];
     for (let i = 0; i < 50; i++) {
       let suffix = Math.floor(Math.random() * 9000 + 1000);
@@ -208,27 +179,27 @@
     }
     marquee.textContent = messages.join('');
 
-    // 轮播图切换
-    const banners = document.querySelectorAll('.banner-carousel img');
-    let current = 0;
-    setInterval(() => {
-      banners[current].classList.remove('active');
-      current = (current + 1) % banners.length;
-      banners[current].classList.add('active');
-    }, 3000);
-
-    // 客服展开/收起
-    function toggleSupport() {
-      const box = document.getElementById('supportBox');
-      box.style.display = box.style.display === 'block' ? 'none' : 'block';
-    }
-
-    // SIGN UP 随机 WhatsApp 跳转
+    // 随机 WhatsApp 跳转
     function goToRandomWhatsApp() {
       const numbers = ['60142820944', '60142820304', '60178986642'];
       const chosen = numbers[Math.floor(Math.random() * numbers.length)];
       window.open(`https://wa.me/${chosen}`, '_blank');
     }
+
+    // 切换客服浮窗
+    function toggleChat() {
+      const box = document.getElementById('chatBox');
+      box.style.display = box.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // 轮播图自动切换
+    let current = 0;
+    const images = document.querySelectorAll('.carousel img');
+    setInterval(() => {
+      images[current].classList.remove('active');
+      current = (current + 1) % images.length;
+      images[current].classList.add('active');
+    }, 4000); // 每 4 秒切换
   </script>
 
 </body>

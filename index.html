@@ -182,6 +182,38 @@
       color: #fff;
       margin-bottom: 0;
     }
+/* 三个按钮容器样式 */
+.three-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 30px auto 40px auto;
+  max-width: 1000px;
+  padding: 0 15px;
+}
+
+/* 通用按钮样式（继承 join-btn） */
+.three-buttons .join-btn {
+  width: 300px;
+  background-color: #ffcc00;
+  color: #111;
+  text-align: center;
+  font-weight: bold;
+  font-size: 22px;
+  padding: 15px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  box-shadow: 0 0 15px #ffcc00;
+  transition: background-color 0.3s ease;
+}
+
+.three-buttons .join-btn:hover {
+  background-color: #e6b800;
+}
 
     /* 加入按钮 */
     .join-btn {
@@ -339,6 +371,7 @@
       .feature-box p {
         font-size: 16px;
       }
+
       /* 加入按钮宽度100vw减边距 */
       .join-btn {
         width: 90vw;
@@ -360,39 +393,6 @@
         font-size: 16px;
         padding: 12px 0;
       }
-/* 三个按钮容器样式 */
-.three-buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin: 30px auto 40px auto;
-  max-width: 1000px;
-  padding: 0 15px;
-}
-
-/* 通用按钮样式，继承 join-btn 样式 */
-.three-buttons .join-btn {
-  width: 300px;
-  background-color: #ffcc00;
-  color: #111;
-  text-align: center;
-  font-weight: bold;
-  font-size: 22px;
-  padding: 15px 0;
-  border-radius: 8px;
-  cursor: pointer;
-  user-select: none;
-  text-decoration: none;
-  box-shadow: 0 0 15px #ffcc00;
-  transition: background-color 0.3s ease;
-}
-
-.three-buttons .join-btn:hover {
-  background-color: #e6b800;
-}
-
 /* 手机版样式：按钮垂直排列 */
 @media screen and (max-width: 600px) {
   .three-buttons {

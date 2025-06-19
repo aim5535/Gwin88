@@ -65,21 +65,25 @@
   width: 100vw;
   z-index: 999;
   background: #111;
-  color: #ffd700; /* 金色 */
+  color: #ffd700; /* 纯金色 */
   overflow: hidden;
   white-space: nowrap;
   font-weight: bold;
   padding: 5px 0;
   font-size: 20px;
 }
-      display: inline-block;
-      padding-left: 100%;
-      animation: scroll 100s linear infinite;
-    }
-    @keyframes scroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
+
+.marquee span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll 80s linear infinite;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
 
     /* 轮播图 */
     .slider {

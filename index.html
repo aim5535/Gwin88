@@ -32,9 +32,11 @@
       padding: 0 20px;
       box-sizing: border-box;
     }
-    .logo img {
-      height: 80px;
-    }
+    @media screen and (min-width: 1000px) {
+  .logo {
+    margin-left: calc((100vw - 1000px) / 2);
+  }
+}
     /* SIGN UP 按钮 电脑版右对齐（最大宽度内） */
     .signup-link {
       position: absolute;

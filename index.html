@@ -580,56 +580,6 @@
     // 窗口大小变化时，刷新轮播位置
     window.onresize = updateSlide;
 
-.highlight-section {
-  max-width: 1000px;
-  margin: 60px auto;
-  padding: 30px;
-  background: linear-gradient(145deg, #111, #222);
-  border-radius: 12px;
-  box-shadow: 0 0 25px #ffcc00;
-  color: #fff;
-  text-align: center;
-  animation: fadeZoom 1.5s ease-in-out;
-}
-
-.highlight-title {
-  font-size: 32px;
-  color: #ffd700;
-  font-weight: bold;
-  margin-bottom: 20px;
-}
-
-.highlight-text {
-  font-size: 20px;
-  line-height: 1.8;
-}
-
-.highlight-call {
-  font-size: 22px;
-  color: #ffcc00;
-  animation: glow 2s infinite alternate;
-}
-
-@keyframes fadeZoom {
-  0% {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes glow {
-  0% {
-    text-shadow: 0 0 5px #ffd700;
-  }
-  100% {
-    text-shadow: 0 0 20px #ffcc00, 0 0 30px #ffaa00;
-  }
-}
-
   </script>
 </body>
 </html>

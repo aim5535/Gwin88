@@ -376,8 +376,15 @@
     font-size: 30px;
   }
 }
+@keyframes pulseZoom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
 
-
+.zoom-pulse {
+  animation: pulseZoom 1.8s infinite;
+}
       /* 加入按钮宽度100vw减边距 */
       .join-btn {
         width: 90vw;
@@ -461,7 +468,7 @@
 <!-- 三个按钮区块（新） -->
 <div class="three-buttons">
   <a class="join-btn" href="https://t.me/fcc247" target="_blank">Telegram Channel</a>
-  <a class="join-btn" href="#" onclick="goToRandomWhatsApp()">I WANT TO JOIN</a>
+  <a class="join-btn zoom-pulse" href="#" onclick="goToRandomWhatsApp()">I WANT TO JOIN</a>
   <a class="join-btn" href="https://whatsapp.com/channel/0029VbAYLa34NVifH1bmwl0R" target="_blank">WhatsApp Channel</a>
 </div>
   <!-- 特点 -->

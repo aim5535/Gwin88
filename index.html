@@ -24,14 +24,15 @@
     }
     /* 限制内部宽度1000px */
     .header-inner {
-      width: 100%;
-      max-width: 1000px;
-      display: flex;
-      align-items: center;
-      position: relative;
-      padding: 0 20px;
-      box-sizing: border-box;
-    }
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto; /* 居中 */
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0;          /* 移除左右内边距 */
+  box-sizing: border-box;
+}
     .logo img {
       height: 80px;
     }

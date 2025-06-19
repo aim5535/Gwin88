@@ -81,9 +81,14 @@
   animation: scroll 80s linear infinite;
 }
 
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+@keyframes pulseZoom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.zoom-pulse {
+  animation: pulseZoom 1.0s infinite; /* 越大越慢 */
 }
 
 
@@ -376,16 +381,7 @@
     font-size: 30px;
   }
 }
-@keyframes pulseZoom {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.08); }
-  100% { transform: scale(1); }
-}
-
-.zoom-pulse {
-  animation: pulseZoom 1.8s infinite;
-}
-      /* 加入按钮宽度100vw减边距 */
+     /* 加入按钮宽度100vw减边距 */
       .join-btn {
         width: 90vw;
         font-size: 20px;

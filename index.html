@@ -79,14 +79,15 @@
 
 .marquee span {
   display: inline-block;
-  min-width: 100%;
-  animation: scroll 80s linear infinite;
+  padding-left: 100%; /* 确保从右边开始 */
+  animation: scroll 80s linear infinite; /* 越大越慢 */
 }
 
 @keyframes scroll {
-  0% { transform: translateX(100%); }
+  0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
 }
+
 
 @keyframes pulseZoom {
   0% { transform: scale(1); }

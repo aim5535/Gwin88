@@ -68,12 +68,13 @@
   width: 100vw;
   z-index: 9999;
   background: #111;
-  color: #ffd700; /* 纯金色 */
+  color: #ffd700;
   overflow: hidden;
   white-space: nowrap;
   font-weight: bold;
   padding: 5px 0;
   font-size: 20px;
+  border-top: 1px solid #444;
 }
 
 .marquee span {
@@ -83,7 +84,7 @@
 }
 
 @keyframes scroll {
-  0%   { transform: translateX(100%); }
+  0% { transform: translateX(100%); }
   100% { transform: translateX(-100%); }
 }
 
